@@ -9,24 +9,23 @@
 /* Begin PBXBuildFile section */
 		0456DE80298EFD1A005571A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456DE7F298EFD1A005571A8 /* AppDelegate.swift */; };
 		0456DE82298EFD1A005571A8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456DE81298EFD1A005571A8 /* SceneDelegate.swift */; };
-		0456DE84298EFD1A005571A8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456DE83298EFD1A005571A8 /* ViewController.swift */; };
 		0456DE8A298EFD1A005571A8 /* WhoIsMillionaire.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0456DE88298EFD1A005571A8 /* WhoIsMillionaire.xcdatamodeld */; };
 		0456DE8C298EFD1D005571A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0456DE8B298EFD1D005571A8 /* Assets.xcassets */; };
 		0456DE8F298EFD1D005571A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0456DE8D298EFD1D005571A8 /* LaunchScreen.storyboard */; };
-		0456DE9A298F1385005571A8 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0456DE99298F1385005571A8 /* Info.plist */; };
 		0456DE9C298F14B3005571A8 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456DE9B298F14B3005571A8 /* StartViewController.swift */; };
+		FC47B08F299146230035F680 /* RulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC47B08E299146230035F680 /* RulesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0456DE7C298EFD1A005571A8 /* WhoIsMillionaire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhoIsMillionaire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0456DE7F298EFD1A005571A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0456DE81298EFD1A005571A8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0456DE83298EFD1A005571A8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0456DE89298EFD1A005571A8 /* WhoIsMillionaire.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WhoIsMillionaire.xcdatamodel; sourceTree = "<group>"; };
 		0456DE8B298EFD1D005571A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0456DE8E298EFD1D005571A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0456DE99298F1385005571A8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0456DE9B298F14B3005571A8 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		FC47B08E299146230035F680 /* RulesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +63,6 @@
 				0456DE97298EFD70005571A8 /* Controller */,
 				0456DE7F298EFD1A005571A8 /* AppDelegate.swift */,
 				0456DE81298EFD1A005571A8 /* SceneDelegate.swift */,
-				0456DE83298EFD1A005571A8 /* ViewController.swift */,
 				0456DE8B298EFD1D005571A8 /* Assets.xcassets */,
 				0456DE8D298EFD1D005571A8 /* LaunchScreen.storyboard */,
 				0456DE88298EFD1A005571A8 /* WhoIsMillionaire.xcdatamodeld */,
@@ -77,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				0456DE9B298F14B3005571A8 /* StartViewController.swift */,
+				FC47B08E299146230035F680 /* RulesViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -155,7 +154,6 @@
 			files = (
 				0456DE8F298EFD1D005571A8 /* LaunchScreen.storyboard in Resources */,
 				0456DE8C298EFD1D005571A8 /* Assets.xcassets in Resources */,
-				0456DE9A298F1385005571A8 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,8 +166,8 @@
 			files = (
 				0456DE9C298F14B3005571A8 /* StartViewController.swift in Sources */,
 				0456DE8A298EFD1A005571A8 /* WhoIsMillionaire.xcdatamodeld in Sources */,
-				0456DE84298EFD1A005571A8 /* ViewController.swift in Sources */,
 				0456DE80298EFD1A005571A8 /* AppDelegate.swift in Sources */,
+				FC47B08F299146230035F680 /* RulesViewController.swift in Sources */,
 				0456DE82298EFD1A005571A8 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
