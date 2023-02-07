@@ -1,6 +1,10 @@
 {
   "images" : [
     {
+<<<<<<< HEAD
+      "filename" : "Frame 2.pdf",
+      "idiom" : "universal"
+=======
       "filename" : "background.png",
       "idiom" : "universal",
       "scale" : "1x"
@@ -14,6 +18,7 @@
       "filename" : "background@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
+>>>>>>> main
     }
   ],
   "info" : {

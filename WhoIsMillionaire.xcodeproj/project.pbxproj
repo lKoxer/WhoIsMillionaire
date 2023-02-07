@@ -13,7 +13,12 @@
 		0456DE8C298EFD1D005571A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0456DE8B298EFD1D005571A8 /* Assets.xcassets */; };
 		0456DE8F298EFD1D005571A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0456DE8D298EFD1D005571A8 /* LaunchScreen.storyboard */; };
 		0456DE9C298F14B3005571A8 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456DE9B298F14B3005571A8 /* StartViewController.swift */; };
+<<<<<<< HEAD
+		9BB01013298FBDA2000DFA95 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB01012298FBDA2000DFA95 /* GameViewController.swift */; };
+		9BC24D4E299044E8009A90A1 /* mainSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BC24D4D299044E8009A90A1 /* mainSound.mp3 */; };
+=======
 		FC47B08F299146230035F680 /* RulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC47B08E299146230035F680 /* RulesViewController.swift */; };
+>>>>>>> main
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +30,12 @@
 		0456DE8E298EFD1D005571A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0456DE99298F1385005571A8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0456DE9B298F14B3005571A8 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+<<<<<<< HEAD
+		9BB01012298FBDA2000DFA95 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		9BC24D4D299044E8009A90A1 /* mainSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = mainSound.mp3; sourceTree = "<group>"; };
+=======
 		FC47B08E299146230035F680 /* RulesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesViewController.swift; sourceTree = "<group>"; };
+>>>>>>> main
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +77,7 @@
 				0456DE8D298EFD1D005571A8 /* LaunchScreen.storyboard */,
 				0456DE88298EFD1A005571A8 /* WhoIsMillionaire.xcdatamodeld */,
 				0456DE99298F1385005571A8 /* Info.plist */,
+				9BC24D4D299044E8009A90A1 /* mainSound.mp3 */,
 			);
 			path = WhoIsMillionaire;
 			sourceTree = "<group>";
@@ -75,7 +86,11 @@
 			isa = PBXGroup;
 			children = (
 				0456DE9B298F14B3005571A8 /* StartViewController.swift */,
+<<<<<<< HEAD
+				9BB01012298FBDA2000DFA95 /* GameViewController.swift */,
+=======
 				FC47B08E299146230035F680 /* RulesViewController.swift */,
+>>>>>>> main
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -152,6 +167,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BC24D4E299044E8009A90A1 /* mainSound.mp3 in Resources */,
 				0456DE8F298EFD1D005571A8 /* LaunchScreen.storyboard in Resources */,
 				0456DE8C298EFD1D005571A8 /* Assets.xcassets in Resources */,
 			);
@@ -167,7 +183,11 @@
 				0456DE9C298F14B3005571A8 /* StartViewController.swift in Sources */,
 				0456DE8A298EFD1A005571A8 /* WhoIsMillionaire.xcdatamodeld in Sources */,
 				0456DE80298EFD1A005571A8 /* AppDelegate.swift in Sources */,
+<<<<<<< HEAD
+				9BB01013298FBDA2000DFA95 /* GameViewController.swift in Sources */,
+=======
 				FC47B08F299146230035F680 /* RulesViewController.swift in Sources */,
+>>>>>>> main
 				0456DE82298EFD1A005571A8 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -309,10 +329,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T2KFAV5TH2;
 				GENERATE_INFOPLIST_FILE = YES;
+				IBSC_FLATTEN_NIBS = NO;
 				INFOPLIST_FILE = WhoIsMillionaire/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -338,10 +358,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T2KFAV5TH2;
 				GENERATE_INFOPLIST_FILE = YES;
+				IBSC_FLATTEN_NIBS = NO;
 				INFOPLIST_FILE = WhoIsMillionaire/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
