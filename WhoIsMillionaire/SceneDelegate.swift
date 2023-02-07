@@ -19,6 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
+<<<<<<< HEAD
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = GameViewController()
         window?.makeKeyAndVisible()
@@ -68,6 +69,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //    }
         
         
+=======
+        let window = UIWindow(windowScene: windowScene)
+        let viewController = StartViewController()
+        window.rootViewController = viewController
+        self.window = window
+
+                window.makeKeyAndVisible()
+>>>>>>> main
     }
     
 }
