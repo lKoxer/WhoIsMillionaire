@@ -16,6 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                willConnectTo session: UISceneSession,
                options connectionOptions: UIScene.ConnectionOptions) {
         
+
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         let viewController = StartViewController()
@@ -36,6 +37,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 ////        window?.rootViewController = view
 ////        window?.makeKeyAndVisible()
 //
+
         //
         //    func sceneDidDisconnect(_ scene: UIScene) {
         //        // Called as the scene is being released by the system.
@@ -69,6 +71,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //    }
         
 
+        
+        // запуск стартовой стр
+        //        let window = UIWindow(windowScene: windowScene)
+        //        let viewController = StartViewController()
+        //        window.rootViewController = viewController
+        //        self.window = window
+        //
+        //                window.makeKeyAndVisible()
+        
+        
+        let window = UIWindow(windowScene: windowScene)
+        window.rootViewController = UINavigationController(rootViewController: GameViewController())
+        window.makeKeyAndVisible()
+        
+        self.window = window
+
     }
-    
 }
