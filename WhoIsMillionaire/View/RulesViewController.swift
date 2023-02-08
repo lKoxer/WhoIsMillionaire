@@ -15,16 +15,6 @@ class RulesViewController: UIViewController {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-    
-    let backToMainScreenButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Назад", for: .normal)
-        button.setTitleColor(#colorLiteral(red: 0.9098039216, green: 0.8196078431, blue: 0.5137254902, alpha: 1), for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
-        button.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
 
     let scrollView: UIScrollView = {
        let scroll = UIScrollView()
@@ -64,10 +54,15 @@ class RulesViewController: UIViewController {
         view.addSubview(scrollView)
         scrollView.addSubview(rulesContent)
         view.addSubview(rulesLabel)
-        view.addSubview(backToMainScreenButton)
         
         setupConstraints()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.topItem?.title = "Назад"
+        self.navigationController?.navigationBar.tintColor = UIColor(#colorLiteral(red: 0.9098039216, green: 0.8196078431, blue: 0.5137254902, alpha: 1));
+    }
+
     
     func setupConstraints() {
 
@@ -92,14 +87,8 @@ class RulesViewController: UIViewController {
             rulesLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
             rulesLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
             rulesLabel.heightAnchor.constraint(lessThanOrEqualToConstant: 150),
-                   
-            backToMainScreenButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            backToMainScreenButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 20)
+                
         ]) 
-    }
-    
-    @objc func backButtonPressed() {
-        dismiss(animated: true, completion: nil)
     }
     
 }

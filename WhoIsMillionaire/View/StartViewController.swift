@@ -93,7 +93,8 @@ class StartViewController: UIViewController {
     }
     
     @objc func startButtonPressed() {
-        print("Начало игры") // временное решение, заменить на переход на экран начала игры
+        let gameStartVC = GameViewController()
+        self.navigationController?.pushViewController(gameStartVC, animated: true)
     }
     
     @objc func rulesButtonPressed() {

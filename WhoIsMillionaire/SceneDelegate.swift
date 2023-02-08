@@ -16,25 +16,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                willConnectTo session: UISceneSession,
                options connectionOptions: UIScene.ConnectionOptions) {
         
-
-        
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = GameViewController()
+        let viewController = StartViewController()
+        
+        let navigatorController = UINavigationController(rootViewController: viewController)
+        navigatorController.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigatorController.navigationBar.shadowImage = UIImage()
+        navigatorController.navigationBar.isTranslucent = true
+
+        window?.rootViewController = navigatorController
         window?.makeKeyAndVisible()
-//        window?.windowScene = windowScene
-//        window?.rootViewController = view
+    
+//        guard let windowScene = (scene as? UIWindowScene) else { return }
+//        window = UIWindow(windowScene: windowScene)
+//        window?.rootViewController = GameViewController()
 //        window?.makeKeyAndVisible()
+////        window?.windowScene = windowScene
+////        window?.rootViewController = view
+////        window?.makeKeyAndVisible()
 //
-        
-        
-        //        let window = UIWindow(windowScene: windowScene)
-        //        let viewController = StartViewController()
-        //        window.rootViewController = viewController
-        //        self.window = window
-        //
-        //                window.makeKeyAndVisible()
-        //    }
         //
         //    func sceneDidDisconnect(_ scene: UIScene) {
         //        // Called as the scene is being released by the system.
@@ -67,13 +68,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //        (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
         //    }
         
-        
-        let window = UIWindow(windowScene: windowScene)
-        let viewController = StartViewController()
-        window.rootViewController = viewController
-        self.window = window
 
-                window.makeKeyAndVisible()
     }
     
 }
