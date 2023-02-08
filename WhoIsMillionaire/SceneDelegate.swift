@@ -16,16 +16,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                willConnectTo session: UISceneSession,
                options connectionOptions: UIScene.ConnectionOptions) {
         
-
+        
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = GameViewController()
-        window?.makeKeyAndVisible()
-//        window?.windowScene = windowScene
-//        window?.rootViewController = view
-//        window?.makeKeyAndVisible()
-//
+        //        window = UIWindow(windowScene: windowScene)
+        //        window?.rootViewController = GameViewController()
+        //        window?.makeKeyAndVisible()
+        //        window?.windowScene = windowScene
+        //        window?.rootViewController = view
+        //        window?.makeKeyAndVisible()
+        //
         
         
         //        let window = UIWindow(windowScene: windowScene)
@@ -68,12 +68,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //    }
         
         
+        // запуск стартовой стр
+        //        let window = UIWindow(windowScene: windowScene)
+        //        let viewController = StartViewController()
+        //        window.rootViewController = viewController
+        //        self.window = window
+        //
+        //                window.makeKeyAndVisible()
+        
+        
         let window = UIWindow(windowScene: windowScene)
-        let viewController = StartViewController()
-        window.rootViewController = viewController
+        window.rootViewController = UINavigationController(rootViewController: GameViewController())
+        window.makeKeyAndVisible()
+        
         self.window = window
-
-                window.makeKeyAndVisible()
     }
-    
 }

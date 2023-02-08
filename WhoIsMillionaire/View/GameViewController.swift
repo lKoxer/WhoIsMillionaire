@@ -97,7 +97,35 @@ class GameViewController: UIViewController {
         playSound()
         setupUI()
         roundTimer()
+        stopButtonAction(button: stopLogoButton)
     }
+    
+    // метод остановки игры
+    func stopButtonAction(button: UIButton) {
+        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+    }
+    @objc func buttonPressed(sender: UIButton) {
+        print("hey")
+        showStopAlert()
+    }
+    func showStopAlert() {
+        let alertController = UIAlertController(title: "Выход", message: "Вы хотите закончить игру?", preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "Да", style: .default) { _ in
+            // переход на экран результата игры
+            let resultVC = ResultViewController()
+            self.navigationController?.pushViewController(resultVC, animated: true)
+        }
+      
+        let cancelAction = UIAlertAction(title: "Нет", style: .cancel, handler: nil)
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(okAction)
+        present(alertController, animated: true) {
+        }
+    }
+    
+    
     
     // метод настройки кнопок опций
     func optionButtonSetup(button: UIButton) {

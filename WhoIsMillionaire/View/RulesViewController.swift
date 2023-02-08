@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RulesViewController: UIViewController {
+class RulesViewController: UIViewController { 
     
     let backgroundView: UIImageView = {
         let imageView = UIImageView()

@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class resultViewController: UIViewController {
+class ResultViewController: UIViewController { //изменил на имя с большой буквы
     
     let logoView: UIImageView = {
        let logoImage = UIImageView ()
@@ -59,9 +59,10 @@ class resultViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "View")!)
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
         setupView()
         setupConstaints()
+        self.navigationItem.hidesBackButton = true // скрытие кнопки назад, добавил Павел
     }
         
         func setupView() {
@@ -73,7 +74,8 @@ class resultViewController: UIViewController {
         }
     }
 
-extension resultViewController {
+extension ResultViewController {
+    
     func setupConstaints() {
         NSLayoutConstraint.activate ([
             logoView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 19),
