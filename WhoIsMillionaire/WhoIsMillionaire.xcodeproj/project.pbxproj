@@ -9,25 +9,31 @@
 /* Begin PBXBuildFile section */
 		0456DE80298EFD1A005571A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456DE7F298EFD1A005571A8 /* AppDelegate.swift */; };
 		0456DE82298EFD1A005571A8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456DE81298EFD1A005571A8 /* SceneDelegate.swift */; };
-		0456DE84298EFD1A005571A8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456DE83298EFD1A005571A8 /* ViewController.swift */; };
 		0456DE8A298EFD1A005571A8 /* WhoIsMillionaire.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0456DE88298EFD1A005571A8 /* WhoIsMillionaire.xcdatamodeld */; };
 		0456DE8C298EFD1D005571A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0456DE8B298EFD1D005571A8 /* Assets.xcassets */; };
 		0456DE8F298EFD1D005571A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0456DE8D298EFD1D005571A8 /* LaunchScreen.storyboard */; };
 		0456DE9C298F14B3005571A8 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456DE9B298F14B3005571A8 /* StartViewController.swift */; };
-		95F67FAF2991819F00B90B03 /* resultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F67FAE2991819F00B90B03 /* resultViewController.swift */; };
+		0456DEBE2992AAA4005571A8 /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456DEBD2992AAA3005571A8 /* QuestionViewController.swift */; };
+		0456DEC02992AADF005571A8 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456DEBF2992AADF005571A8 /* ResultViewController.swift */; };
+		9BB01013298FBDA2000DFA95 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB01012298FBDA2000DFA95 /* GameViewController.swift */; };
+		9BC24D4E299044E8009A90A1 /* mainSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BC24D4D299044E8009A90A1 /* mainSound.mp3 */; };
+		FC47B08F299146230035F680 /* RulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC47B08E299146230035F680 /* RulesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0456DE7C298EFD1A005571A8 /* WhoIsMillionaire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhoIsMillionaire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0456DE7F298EFD1A005571A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0456DE81298EFD1A005571A8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0456DE83298EFD1A005571A8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0456DE89298EFD1A005571A8 /* WhoIsMillionaire.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WhoIsMillionaire.xcdatamodel; sourceTree = "<group>"; };
 		0456DE8B298EFD1D005571A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0456DE8E298EFD1D005571A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0456DE99298F1385005571A8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0456DE9B298F14B3005571A8 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
-		95F67FAE2991819F00B90B03 /* resultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resultViewController.swift; sourceTree = "<group>"; };
+		0456DEBD2992AAA3005571A8 /* QuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
+		0456DEBF2992AADF005571A8 /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		9BB01012298FBDA2000DFA95 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		9BC24D4D299044E8009A90A1 /* mainSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = mainSound.mp3; sourceTree = "<group>"; };
+		FC47B08E299146230035F680 /* RulesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,11 +71,11 @@
 				0456DE97298EFD70005571A8 /* Controller */,
 				0456DE7F298EFD1A005571A8 /* AppDelegate.swift */,
 				0456DE81298EFD1A005571A8 /* SceneDelegate.swift */,
-				0456DE83298EFD1A005571A8 /* ViewController.swift */,
 				0456DE8B298EFD1D005571A8 /* Assets.xcassets */,
 				0456DE8D298EFD1D005571A8 /* LaunchScreen.storyboard */,
 				0456DE88298EFD1A005571A8 /* WhoIsMillionaire.xcdatamodeld */,
 				0456DE99298F1385005571A8 /* Info.plist */,
+				9BC24D4D299044E8009A90A1 /* mainSound.mp3 */,
 			);
 			path = WhoIsMillionaire;
 			sourceTree = "<group>";
@@ -78,7 +84,10 @@
 			isa = PBXGroup;
 			children = (
 				0456DE9B298F14B3005571A8 /* StartViewController.swift */,
-				95F67FAE2991819F00B90B03 /* resultViewController.swift */,
+				FC47B08E299146230035F680 /* RulesViewController.swift */,
+				9BB01012298FBDA2000DFA95 /* GameViewController.swift */,
+				0456DEBD2992AAA3005571A8 /* QuestionViewController.swift */,
+				0456DEBF2992AADF005571A8 /* ResultViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -155,6 +164,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BC24D4E299044E8009A90A1 /* mainSound.mp3 in Resources */,
 				0456DE8F298EFD1D005571A8 /* LaunchScreen.storyboard in Resources */,
 				0456DE8C298EFD1D005571A8 /* Assets.xcassets in Resources */,
 			);
@@ -169,9 +179,11 @@
 			files = (
 				0456DE9C298F14B3005571A8 /* StartViewController.swift in Sources */,
 				0456DE8A298EFD1A005571A8 /* WhoIsMillionaire.xcdatamodeld in Sources */,
-				0456DE84298EFD1A005571A8 /* ViewController.swift in Sources */,
-				95F67FAF2991819F00B90B03 /* resultViewController.swift in Sources */,
+				0456DEBE2992AAA4005571A8 /* QuestionViewController.swift in Sources */,
+				0456DEC02992AADF005571A8 /* ResultViewController.swift in Sources */,
 				0456DE80298EFD1A005571A8 /* AppDelegate.swift in Sources */,
+				9BB01013298FBDA2000DFA95 /* GameViewController.swift in Sources */,
+				FC47B08F299146230035F680 /* RulesViewController.swift in Sources */,
 				0456DE82298EFD1A005571A8 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -313,6 +325,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T2KFAV5TH2;
 				GENERATE_INFOPLIST_FILE = YES;
+				IBSC_FLATTEN_NIBS = NO;
 				INFOPLIST_FILE = WhoIsMillionaire/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -341,6 +354,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T2KFAV5TH2;
 				GENERATE_INFOPLIST_FILE = YES;
+				IBSC_FLATTEN_NIBS = NO;
 				INFOPLIST_FILE = WhoIsMillionaire/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
