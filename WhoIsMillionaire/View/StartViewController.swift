@@ -35,7 +35,7 @@ class StartViewController: UIViewController {
         button.layer.borderWidth = 5
         button.setTitle("Новая игра", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 22)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 28)
         button.addTarget(self, action: #selector(startButtonPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -49,7 +49,7 @@ class StartViewController: UIViewController {
         button.layer.borderWidth = 5
         button.setTitle("Правила игры", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 22)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 28)
         button.addTarget(self, action: #selector(rulesButtonPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -80,20 +80,20 @@ class StartViewController: UIViewController {
             backgroundView.topAnchor.constraint(equalTo: view.topAnchor),
             backgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 
-            startButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -130),
+            startButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -230),
             startButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
             startButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
             startButton.heightAnchor.constraint(equalToConstant: 60),
 
-            rulesButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
+            rulesButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -150),
             rulesButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
             rulesButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
             rulesButton.heightAnchor.constraint(equalToConstant: 60),
 
             logoView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             logoView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100),
-            logoView.widthAnchor.constraint(equalToConstant: 225),
-            logoView.heightAnchor.constraint(equalToConstant: 225)
+            logoView.widthAnchor.constraint(equalToConstant: 300),
+            logoView.heightAnchor.constraint(equalToConstant: 300)
         ])
     }
     
