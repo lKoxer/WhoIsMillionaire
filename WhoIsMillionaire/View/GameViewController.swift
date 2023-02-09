@@ -55,7 +55,7 @@ class GameViewController: UIViewController {
     // лейбл номера вопроса
     let questionNumberLabel: UILabel = {
         let label = UILabel()
-        label.text = "Question 1"
+        label.text = "Вопрос 1"
         label.textColor = .white
         label.textAlignment = .left
         label.font = UIFont(name: "Roboto-Medium", size: 40)
@@ -66,7 +66,7 @@ class GameViewController: UIViewController {
     // лейбл суммы вопроса
     let questionSummLabel: UILabel = {
         let label = UILabel()
-        label.text = "500 RUB"
+//        label.text = "500 RUB"
         label.textAlignment = .right
         label.layer.cornerRadius = 10
         label.textColor = .white
@@ -100,7 +100,7 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        playSound()
+        playMainSound()
         setupUI()
         roundTimer()
         stopButtonAction(button: stopLogoButton)
@@ -133,8 +133,6 @@ class GameViewController: UIViewController {
         present(alertController, animated: true) {
         }
     }
-    
-    
     
     // метод настройки кнопок опций
     func optionButtonSetup(button: UIButton) {
@@ -170,11 +168,12 @@ class GameViewController: UIViewController {
             timerLabel.text = String(totalTime)
         } else {
             timer.invalidate()
+            gameOver()
         }
     }
     
     // метод воспр. музыки
-    func playSound() {
+    func playMainSound() {
         guard let url = Bundle.main.url(forResource: "mainSound", withExtension: "mp3") else { return }
         do {
             player = try AVAudioPlayer(contentsOf: url)
@@ -186,7 +185,6 @@ class GameViewController: UIViewController {
     
     //MARK: - UISetup
     func setupUI() {
-        
         // настройка кнопок опций
         optionButtonSetup(button: stopLogoButton)
         optionButtonSetup(button: fiftyFiftyButton)
@@ -198,28 +196,8 @@ class GameViewController: UIViewController {
         callToFriendButton.setBackgroundImage(UIImage(named: "friendCall"), for: .normal)
         hallHelpButton.setBackgroundImage(UIImage(named: "hallHelp"), for: .normal)
         
-        //задаем изображение кнопкам ответа
-//        for button in [answerButtonA, answerButtonB, answerButtonC, answerButtonD] {
-//            button.setBackgroundImage(UIImage(named: "answerButtonImage"), for: .normal)
-////            button.imageView?.contentMode = .scaleAspectFill
-////            button.layoutIfNeeded()
-////            button.subviews.first?.contentMode = .scaleAspectFill
-////            button.translatesAutoresizingMaskIntoConstraints = false
-////            button.imageView?.translatesAutoresizingMaskIntoConstraints = true
-//        }
-        
         // настройка кнопок ответа
-//        answerButtonSetup(button: answerButtonA)
-//        answerButtonSetup(button: answerButtonB)
-//        answerButtonSetup(button: answerButtonC)
-//        answerButtonSetup(button: answerButtonD)
         answerButtonSetup()
-       
-        // временно пропишем имена кнопкам выбора
-//        answerButtonA.setTitle("A", for: .normal)
-//        answerButtonB.setTitle("B", for: .normal)
-//        answerButtonC.setTitle("C", for: .normal)
-//        answerButtonD.setTitle("D", for: .normal)
         
         // верхний стэк из лого-кнопки и вопроса
         let logoQuestionStackView = UIStackView(arrangedSubviews: [stopLogoButton, questionLabel])

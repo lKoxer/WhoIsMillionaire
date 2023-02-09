@@ -8,24 +8,12 @@
 import Foundation
 
 struct QuestionModel {
-//    let sum: String
-//    let question: String
-//    var answers: [String]
-//    var correctAnswer: String
-  
+
   // счет игры
   var score = ""
   
   // номер вопроса
   var questionNumber = 0
-  
-  
-//    init(s: String, q: String, a: [String], cA: String) {
-//        sum = s
-//        question = q
-//        answers = a
-//        correctAnswer = cA
-//    }
   
   // массив из стркуктуры "Вопрос"
   let questions = [
