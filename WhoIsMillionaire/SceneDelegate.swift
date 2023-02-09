@@ -16,7 +16,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                willConnectTo session: UISceneSession,
                options connectionOptions: UIScene.ConnectionOptions) {
         
-
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         let viewController = StartViewController()
@@ -29,15 +28,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = navigatorController
         window?.makeKeyAndVisible()
     
-//        guard let windowScene = (scene as? UIWindowScene) else { return }
-//        window = UIWindow(windowScene: windowScene)
-//        window?.rootViewController = GameViewController()
-//        window?.makeKeyAndVisible()
-////        window?.windowScene = windowScene
-////        window?.rootViewController = view
-////        window?.makeKeyAndVisible()
-//
-
         //
         //    func sceneDidDisconnect(_ scene: UIScene) {
         //        // Called as the scene is being released by the system.
@@ -70,22 +60,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //        (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
         //    }
         
-
         
-        // запуск стартовой стр
-        //        let window = UIWindow(windowScene: windowScene)
-        //        let viewController = StartViewController()
-        //        window.rootViewController = viewController
-        //        self.window = window
-        //
-        //                window.makeKeyAndVisible()
-        
-        
-        let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = UINavigationController(rootViewController: GameViewController())
-        window.makeKeyAndVisible()
-        
-        self.window = window
+//        let window = UIWindow(windowScene: windowScene)
+//        window.rootViewController = UINavigationController(rootViewController: GameViewController())
+//        window.makeKeyAndVisible()
+//
+//        self.window = window
 
     }
 }

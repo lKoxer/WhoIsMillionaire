@@ -5,26 +5,28 @@
 //  Created by Kox on 04.02.2023.
 //
 
-import Foundation
 import UIKit
+import AVFoundation
 
 class StartViewController: UIViewController {
-  
     
+    var player = AVAudioPlayer()
+    
+    // создание фонового изображения
     let backgroundView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "background")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-    
+    // создание лого
     let logoView: UIImageView = {
         let image = UIImage(named: "logo")
         let imageView = UIImageView(image: image)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-    
+    // создание кнопки "Новая игра"
     var startButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = #colorLiteral(red: 0.1607843137, green: 0.1921568627, blue: 0.2980392157, alpha: 1)
@@ -38,7 +40,7 @@ class StartViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    
+    // создание кнопки "Правила игры"
     var rulesButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = #colorLiteral(red: 0.1607843137, green: 0.1921568627, blue: 0.2980392157, alpha: 1)
@@ -56,6 +58,8 @@ class StartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        playSound()
+        
         view.addSubview(backgroundView)
         view.addSubview(logoView)
         view.addSubview(startButton)
@@ -67,6 +71,7 @@ class StartViewController: UIViewController {
         
     }
     
+    // настройка констрейнтов
     func setupConstraints() {
         
         NSLayoutConstraint.activate([
@@ -92,14 +97,27 @@ class StartViewController: UIViewController {
         ])
     }
     
+    // действие по нажатию кнопки "Новая игра"
     @objc func startButtonPressed() {
         let gameStartVC = GameViewController()
         self.navigationController?.pushViewController(gameStartVC, animated: true)
+        player.stop()
     }
-    
+    // действие по нажатию кнопки "Правила игры"
     @objc func rulesButtonPressed() {
         let rulesVC = RulesViewController()
         self.navigationController?.pushViewController(rulesVC, animated: true)
+    }
+    // настройка фоновой музыки
+    func playSound() {
+        guard let url = Bundle.main.url(forResource: "welcomeSound", withExtension: "mp3") else { return }
+        do {
+            player = try AVAudioPlayer(contentsOf: url)
+            player.numberOfLoops = -1
+        } catch {
+            print ("sound error")
+        }
+        player.play()
     }
     
 }
