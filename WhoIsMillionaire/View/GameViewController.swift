@@ -100,7 +100,7 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        playMainSound()
+        playTimeSound()
         setupUI()
         roundTimer()
         stopButtonAction(button: stopLogoButton)
@@ -173,8 +173,8 @@ class GameViewController: UIViewController {
     }
     
     // метод воспр. музыки
-    func playMainSound() {
-        guard let url = Bundle.main.url(forResource: "mainSound", withExtension: "mp3") else { return }
+    func playTimeSound() {
+        guard let url = Bundle.main.url(forResource: "timeSound", withExtension: "mp3") else { return }
         do {
             player = try AVAudioPlayer(contentsOf: url)
         } catch {

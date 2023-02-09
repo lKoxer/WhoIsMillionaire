@@ -110,7 +110,7 @@ class StartViewController: UIViewController {
     }
     // настройка фоновой музыки
     func playSound() {
-        guard let url = Bundle.main.url(forResource: "welcomeSound", withExtension: "mp3") else { return }
+        guard let url = Bundle.main.url(forResource: "mainSound", withExtension: "mp3") else { return }
         do {
             player = try AVAudioPlayer(contentsOf: url)
             player.numberOfLoops = -1

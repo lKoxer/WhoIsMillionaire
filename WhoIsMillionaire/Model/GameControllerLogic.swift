@@ -53,7 +53,7 @@ extension GameViewController { // вынес логику действий в и
     
     // логика смены вопроса на экране
     @objc func updateUI() {
-        playMainSound()
+        playTimeSound()
   
         // след вопрос на экране
         questionLabel.text = questionModel.getQuestionText()
