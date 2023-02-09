@@ -1,4 +1,5 @@
 //
+//
 //  GameViewController.swift
 //  WhoIsMillionaire
 //
@@ -79,7 +80,9 @@ class GameViewController: UIViewController {
         let label = UILabel()
         label.text = "Here a place for my question!"
         label.numberOfLines = 0
-        label.textAlignment = .left
+        label.textAlignment = .natural
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.7
         label.textColor = .white
         label.font = UIFont(name: "Roboto-Medium", size: 20)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -92,19 +95,25 @@ class GameViewController: UIViewController {
     let answerButtonC = UIButton()
     let answerButtonD = UIButton()
     
+    // экземпляр QuestionModel
+    var questionModel = QuestionModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         playSound()
         setupUI()
         roundTimer()
         stopButtonAction(button: stopLogoButton)
+        answerButtonAction()
+        updateUI()
     }
     
-    // метод остановки игры
+    
+    // метод остановки игры ч-з нажатие на стоп и алерт
     func stopButtonAction(button: UIButton) {
-        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(stopButtonPressed), for: .touchUpInside)
     }
-    @objc func buttonPressed(sender: UIButton) {
+    @objc func stopButtonPressed(sender: UIButton) {
         print("hey")
         showStopAlert()
     }
@@ -135,11 +144,16 @@ class GameViewController: UIViewController {
     }
     
     // метод настройки кнопок ответа
-    func answerButtonSetup(button: UIButton) {
-        button.layer.cornerRadius = 10
-        button.showsTouchWhenHighlighted = true
-        button.titleLabel?.font = .systemFont(ofSize: 12)
+    func answerButtonSetup() {
+        for button in [answerButtonA, answerButtonB, answerButtonC, answerButtonD] {
+            //        button.layer.cornerRadius = 10
+            //        button.showsTouchWhenHighlighted = true
+            button.titleLabel?.font = .systemFont(ofSize: 16)
+            //        button.imageView?.contentMode = UIView.ContentMode.scaleAspectFill
+            button.setBackgroundImage(UIImage(named: "answerButtonImage"), for: .normal)
+        }
     }
+    
     
     //MARK: - Таймер и музыка
     func roundTimer() {
@@ -185,21 +199,27 @@ class GameViewController: UIViewController {
         hallHelpButton.setBackgroundImage(UIImage(named: "hallHelp"), for: .normal)
         
         //задаем изображение кнопкам ответа
-        for button in [answerButtonA, answerButtonB, answerButtonC, answerButtonD] {
-            button.setBackgroundImage(UIImage(named: "answerButtonBackground"), for: .normal)
-        }
+//        for button in [answerButtonA, answerButtonB, answerButtonC, answerButtonD] {
+//            button.setBackgroundImage(UIImage(named: "answerButtonImage"), for: .normal)
+////            button.imageView?.contentMode = .scaleAspectFill
+////            button.layoutIfNeeded()
+////            button.subviews.first?.contentMode = .scaleAspectFill
+////            button.translatesAutoresizingMaskIntoConstraints = false
+////            button.imageView?.translatesAutoresizingMaskIntoConstraints = true
+//        }
         
         // настройка кнопок ответа
-        answerButtonSetup(button: answerButtonA)
-        answerButtonSetup(button: answerButtonB)
-        answerButtonSetup(button: answerButtonC)
-        answerButtonSetup(button: answerButtonD)
+//        answerButtonSetup(button: answerButtonA)
+//        answerButtonSetup(button: answerButtonB)
+//        answerButtonSetup(button: answerButtonC)
+//        answerButtonSetup(button: answerButtonD)
+        answerButtonSetup()
        
         // временно пропишем имена кнопкам выбора
-        answerButtonA.setTitle("A", for: .normal)
-        answerButtonB.setTitle("B", for: .normal)
-        answerButtonC.setTitle("C", for: .normal)
-        answerButtonD.setTitle("D", for: .normal)
+//        answerButtonA.setTitle("A", for: .normal)
+//        answerButtonB.setTitle("B", for: .normal)
+//        answerButtonC.setTitle("C", for: .normal)
+//        answerButtonD.setTitle("D", for: .normal)
         
         // верхний стэк из лого-кнопки и вопроса
         let logoQuestionStackView = UIStackView(arrangedSubviews: [stopLogoButton, questionLabel])
@@ -229,7 +249,7 @@ class GameViewController: UIViewController {
         let answerStackView = UIStackView(arrangedSubviews: [answerButtonA, answerButtonB, answerButtonC, answerButtonD])
         answerStackView.axis = .vertical
         answerStackView.alignment = .fill
-        answerStackView.spacing = 12
+        answerStackView.spacing = 10
         answerStackView.distribution = .fillEqually
         answerStackView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -251,15 +271,15 @@ class GameViewController: UIViewController {
             logoQuestionStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
             logoQuestionStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             logoQuestionStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-            logoQuestionStackView.heightAnchor.constraint(equalToConstant: 80),
+            logoQuestionStackView.heightAnchor.constraint(equalToConstant: 90),
             
             questionSummStackView.topAnchor.constraint(equalTo: logoQuestionStackView.bottomAnchor, constant: 16),
-            questionSummStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            questionSummStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
             questionSummStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-            questionSummStackView.heightAnchor.constraint(equalToConstant: 95),
+            questionSummStackView.heightAnchor.constraint(equalToConstant: 45),
             
             answerStackView.topAnchor.constraint(equalTo: questionSummStackView.bottomAnchor, constant: 16),
-            answerStackView.bottomAnchor.constraint(equalTo: optionStackView.topAnchor, constant: -30),
+            answerStackView.bottomAnchor.constraint(equalTo: optionStackView.topAnchor, constant: -80),
             answerStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             answerStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
             
@@ -272,3 +292,4 @@ class GameViewController: UIViewController {
     }
 
 }
+
