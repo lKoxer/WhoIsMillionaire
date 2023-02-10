@@ -57,7 +57,7 @@ extension GameViewController { // вынес логику действий в и
         timer.invalidate() //стопим таймер
         totalTime = 30 //обнуляем время
         secondPassed = 0
-        playMainSound()
+        playTimeSound()
         roundTimer()
 
   
