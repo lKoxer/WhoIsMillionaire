@@ -32,6 +32,7 @@ extension GameViewController { // вынес логику действий в и
             sender.setBackgroundImage(UIImage(named: "correctAnswerImage"), for: .normal)
             questionModel.nextQuestion()
             Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateUI), userInfo: nil, repeats: false)
+            prizeAmount = questionModel.countOfSum()
             // музыка
             guard let url = Bundle.main.url(forResource: "correctEasyAnswerSound", withExtension: "mp3") else { return }
             do {
@@ -47,6 +48,7 @@ extension GameViewController { // вынес логику действий в и
             sender.setBackgroundImage(UIImage(named: "incorrectAnswerImage"), for: .normal)
             // таймер при нажатии кнопки неверного ответа
             Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(gameOver), userInfo: nil, repeats: false)
+            prizeAmount = questionModel.countOfSum()
         }
      
     }
@@ -89,6 +91,7 @@ extension GameViewController { // вынес логику действий в и
         // переход на экран результата
         let resultVC = ResultViewController()
         self.navigationController?.pushViewController(resultVC, animated: true)
+        resultVC.resultOfTheGame = prizeAmount
     }
 }
 
