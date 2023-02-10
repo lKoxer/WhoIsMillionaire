@@ -103,9 +103,11 @@ class GameViewController: UIViewController {
         playTimeSound()
         setupUI()
         roundTimer()
+        fiftyFiftyLogic()
         stopButtonAction(button: stopLogoButton)
         answerButtonAction()
         updateUI()
+        
     }
     
     
@@ -120,12 +122,11 @@ class GameViewController: UIViewController {
     func showStopAlert() {
         let alertController = UIAlertController(title: "Выход", message: "Вы хотите закончить игру?", preferredStyle: .alert)
         
+        // переход на экран результата игры
         let okAction = UIAlertAction(title: "Да", style: .default) { _ in
-            // переход на экран результата игры
-            let resultVC = ResultViewController()
-            self.navigationController?.pushViewController(resultVC, animated: true)
+            self.gameOver()
         }
-      
+        // отмена выхода
         let cancelAction = UIAlertAction(title: "Нет", style: .cancel, handler: nil)
         
         alertController.addAction(cancelAction)
