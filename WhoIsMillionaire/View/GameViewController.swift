@@ -102,8 +102,10 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         playTimeSound()
         setupUI()
-        roundTimer()
+//        roundTimer()
         fiftyFiftyLogic()
+        hallHelpLogic()
+        friendCallLogic()
         stopButtonAction(button: stopLogoButton)
         answerButtonAction()
         updateUI()
@@ -115,11 +117,8 @@ class GameViewController: UIViewController {
     func stopButtonAction(button: UIButton) {
         button.addTarget(self, action: #selector(stopButtonPressed), for: .touchUpInside)
     }
+    
     @objc func stopButtonPressed(sender: UIButton) {
-        print("hey")
-        showStopAlert()
-    }
-    func showStopAlert() {
         let alertController = UIAlertController(title: "Выход", message: "Вы хотите закончить игру?", preferredStyle: .alert)
         
         // переход на экран результата игры
@@ -156,6 +155,7 @@ class GameViewController: UIViewController {
     
     //MARK: - Таймер и музыка
     func roundTimer() {
+      
         timer = Timer.scheduledTimer(timeInterval: 1.0,
                                      target: self,
                                      selector: #selector(updateTimerLabel),
@@ -164,9 +164,11 @@ class GameViewController: UIViewController {
     }
     
     @objc func updateTimerLabel() {
+    
         if secondPassed < totalTime {
-            totalTime -= 1
             timerLabel.text = String(totalTime)
+            totalTime -= 1
+            
         } else {
             timer.invalidate()
             gameOver()
@@ -186,6 +188,7 @@ class GameViewController: UIViewController {
     
     //MARK: - UISetup
     func setupUI() {
+        
         // настройка кнопок опций
         optionButtonSetup(button: stopLogoButton)
         optionButtonSetup(button: fiftyFiftyButton)
