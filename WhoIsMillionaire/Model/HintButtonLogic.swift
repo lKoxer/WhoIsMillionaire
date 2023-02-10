@@ -11,7 +11,7 @@ import UIKit
 extension GameViewController {
     
 //MARK: - 50:50
-    //
+    ///
     func fiftyFiftyLogic() {
         fiftyFiftyButton.addTarget(self, action: #selector(fiftyFiftyAction), for: .touchUpInside)
     }
