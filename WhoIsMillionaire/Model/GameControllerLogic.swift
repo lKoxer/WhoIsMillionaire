@@ -22,7 +22,7 @@ extension GameViewController { // вынес логику действий в и
     @objc func answerButtonPressed(_ sender: UIButton) {
         
         // ставим кнопкам ответы
-        guard let userAnswer = sender.currentTitle else { return print("answersMistake") }
+        guard var userAnswer = sender.currentTitle else { return print("answersMistake") }
         // проверяем ответ, то меняем фон кнопки на соотвествующий
         let userGotItRight = questionModel.checkAnswer(userAnswer: userAnswer)
         
@@ -53,7 +53,11 @@ extension GameViewController { // вынес логику действий в и
     
     // логика смены вопроса на экране
     @objc func updateUI() {
+        timer.invalidate() //стопим таймер
+        totalTime = 30 //обнуляем время
+        secondPassed = 0
         playMainSound()
+        roundTimer()
   
         // след вопрос на экране
         questionLabel.text = questionModel.getQuestionText()

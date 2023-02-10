@@ -107,6 +107,7 @@ struct QuestionModel {
       //Need to change answer to rightAnswer here.
       if userAnswer == questions[questionNumber].correctAnswer {
           score = questions[questionNumber].summ
+          
           return true
       } else {
           return false
