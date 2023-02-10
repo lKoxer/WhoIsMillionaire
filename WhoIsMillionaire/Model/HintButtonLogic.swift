@@ -59,30 +59,30 @@ extension GameViewController {
         let answerButtonArray = [answerButtonA, answerButtonB, answerButtonC, answerButtonD]
         answerButtonArray[index].setTitle("", for: .normal)
     }
-        
     
-        //MARK: - помощь зала
-        func hallHelpLogic() {
-            hallHelpButton.addTarget(self, action: #selector(hallHelpAction), for: .touchUpInside)
+    
+    //MARK: - помощь зала
+    func hallHelpLogic() {
+        hallHelpButton.addTarget(self, action: #selector(hallHelpAction), for: .touchUpInside)
+    }
+    
+    @objc func hallHelpAction() {
+        let alertController = UIAlertController(title: "Подсказка Помощь Зала", message: "Вы хотите взять подсказку?", preferredStyle: .alert)
+        
+        // переход на экран результата игры
+        let okAction = UIAlertAction(title: "Да", style: .default) { _ in
+            self.hallHelpAnswers()
+            self.hallHelpButton.isEnabled = false
+        }
+        // отмена выхода
+        let cancelAction = UIAlertAction(title: "Нет", style: .cancel, handler: nil)
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(okAction)
+        present(alertController, animated: true) {
         }
         
-        @objc func hallHelpAction() {
-            let alertController = UIAlertController(title: "Подсказка Помощь Зала", message: "Вы хотите взять подсказку?", preferredStyle: .alert)
-            
-            // переход на экран результата игры
-            let okAction = UIAlertAction(title: "Да", style: .default) { _ in
-                self.hallHelpAnswers()
-                self.hallHelpButton.isEnabled = false
-            }
-            // отмена выхода
-            let cancelAction = UIAlertAction(title: "Нет", style: .cancel, handler: nil)
-            
-            alertController.addAction(cancelAction)
-            alertController.addAction(okAction)
-            present(alertController, animated: true) {
-            }
-            
-        }
+    }
     
     func hallHelpAnswers() {
         
@@ -91,7 +91,7 @@ extension GameViewController {
         // массив неверных ответов
         var onlyIncorrectAnswers = [UIButton]()
         // массив все кнопок
-        var answerButtonArray = [answerButtonA, answerButtonB, answerButtonC, answerButtonD]
+        let answerButtonArray = [answerButtonA, answerButtonB, answerButtonC, answerButtonD]
         
         for button in answerButtonArray  {
             if  button.currentTitle != "" {
@@ -135,10 +135,86 @@ extension GameViewController {
         present(alert, animated: true, completion: nil)
         
     }
-        
     
-        
+    //MARK: - звоноу другу
+    func friendCallLogic() {
+        callToFriendButton.addTarget(self, action: #selector(callFriendAction), for: .touchUpInside)
+    }
     
+    @objc func callFriendAction() {
+        
+        let alertController = UIAlertController(title: "Подсказка Звонок Другу", message: "Вы хотите взять подсказку?", preferredStyle: .alert)
+        
+        // переход на экран результата игры
+        let okAction = UIAlertAction(title: "Да", style: .default) { _ in
+            self.friendHelpAnswer()
+            self.callToFriendButton.isEnabled = false
+        }
+        // отмена выхода
+        let cancelAction = UIAlertAction(title: "Нет", style: .cancel, handler: nil)
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(okAction)
+        present(alertController, animated: true) {
+        }
+        
+    }
+    
+    func friendHelpAnswer() {
+            
+            // массив не пустых кнопок ответа
+            var notEmptyButton = [UIButton]()
+            // массив неверных ответов
+            var onlyIncorrectAnswers = [UIButton]()
+            // массив все кнопок
+            let answerButtonArray = [answerButtonA, answerButtonB, answerButtonC, answerButtonD]
+            
+            for button in answerButtonArray  {
+                if  button.currentTitle != "" {
+                    notEmptyButton.append(button)
+                }
+            }
+            
+            for button in notEmptyButton {
+                if  questionModel.checkAnswer(userAnswer: button.currentTitle!) == false {
+                    onlyIncorrectAnswers.append(button)
+                }
+            }
+            
+            var correctAnswer = Bool()
+            var answerTitle = ""
+            let randomNumber = Int.random(in: 1...100)
+            switch randomNumber {
+            case 0...80: //!!!
+                correctAnswer = true
+                print("true")
+            default:
+                correctAnswer = false
+                print("false")
+            }
+            
+            for button in notEmptyButton {
+                if questionModel.checkAnswer(userAnswer: button.currentTitle!) && correctAnswer {
+                    answerTitle = button.currentTitle!
+                } else {
+                    if correctAnswer == false {
+                        answerTitle = onlyIncorrectAnswers.randomElement()?.currentTitle ?? "Error of title"
+                        
+                    }
+                }
+            }
+            
+            let alert = UIAlertController(title: "👋 Не уверен точно, но думаю 🤔 это", message: answerTitle, preferredStyle: .alert)
+            let okayAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(okayAction)
+            present(alert, animated: true, completion: nil)
+            
+        }
+        
+        
+        
+        
+        
     
         
     

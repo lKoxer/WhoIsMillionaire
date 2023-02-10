@@ -105,6 +105,7 @@ class GameViewController: UIViewController {
 //        roundTimer()
         fiftyFiftyLogic()
         hallHelpLogic()
+        friendCallLogic()
         stopButtonAction(button: stopLogoButton)
         answerButtonAction()
         updateUI()
