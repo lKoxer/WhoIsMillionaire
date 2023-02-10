@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		040327B629953C140054F573 /* timeSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 040327B529953C140054F573 /* timeSound.mp3 */; };
 		0456DE80298EFD1A005571A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456DE7F298EFD1A005571A8 /* AppDelegate.swift */; };
 		0456DE82298EFD1A005571A8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456DE81298EFD1A005571A8 /* SceneDelegate.swift */; };
 		0456DE8A298EFD1A005571A8 /* WhoIsMillionaire.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0456DE88298EFD1A005571A8 /* WhoIsMillionaire.xcdatamodeld */; };
@@ -25,9 +26,14 @@
 		9BC24D4E299044E8009A90A1 /* mainSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BC24D4D299044E8009A90A1 /* mainSound.mp3 */; };
 		FC333AED2993E28D000158E6 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC333AEC2993E28D000158E6 /* Question.swift */; };
 		FC47B08F299146230035F680 /* RulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC47B08E299146230035F680 /* RulesViewController.swift */; };
+		FCE9759A2995996C0087AF2E /* gameOverSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FCE975972995996C0087AF2E /* gameOverSound.mp3 */; };
+		FCE9759B2995996C0087AF2E /* takeMoneySound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FCE975982995996C0087AF2E /* takeMoneySound.mp3 */; };
+		FCE9759C2995996C0087AF2E /* millionWin.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FCE975992995996C0087AF2E /* millionWin.mp3 */; };
+		FCE9759F299599AB0087AF2E /* welcomeSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FCE9759E299599AB0087AF2E /* welcomeSound.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		040327B529953C140054F573 /* timeSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = timeSound.mp3; sourceTree = "<group>"; };
 		0456DE7C298EFD1A005571A8 /* WhoIsMillionaire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhoIsMillionaire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0456DE7F298EFD1A005571A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0456DE81298EFD1A005571A8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -48,6 +54,10 @@
 		9BC24D4D299044E8009A90A1 /* mainSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = mainSound.mp3; sourceTree = "<group>"; };
 		FC333AEC2993E28D000158E6 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		FC47B08E299146230035F680 /* RulesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesViewController.swift; sourceTree = "<group>"; };
+		FCE975972995996C0087AF2E /* gameOverSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = gameOverSound.mp3; path = ../../../../Downloads/gameOverSound.mp3; sourceTree = "<group>"; };
+		FCE975982995996C0087AF2E /* takeMoneySound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = takeMoneySound.mp3; path = ../../../../Downloads/takeMoneySound.mp3; sourceTree = "<group>"; };
+		FCE975992995996C0087AF2E /* millionWin.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = millionWin.mp3; path = ../../../../Downloads/millionWin.mp3; sourceTree = "<group>"; };
+		FCE9759E299599AB0087AF2E /* welcomeSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = welcomeSound.mp3; path = ../../../../Downloads/welcomeSound.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,9 +138,14 @@
 			isa = PBXGroup;
 			children = (
 				9BC24D4D299044E8009A90A1 /* mainSound.mp3 */,
+				FCE975972995996C0087AF2E /* gameOverSound.mp3 */,
+				FCE975992995996C0087AF2E /* millionWin.mp3 */,
+				FCE975982995996C0087AF2E /* takeMoneySound.mp3 */,
+				FCE9759E299599AB0087AF2E /* welcomeSound.mp3 */,
 				9BB2B2592995042B00F4E69C /* correctAnswerSound.mp3 */,
 				9BB2B25A2995042B00F4E69C /* incorrectAnswerSound.mp3 */,
 				9BB2B25F299508A200F4E69C /* correctEasyAnswerSound.mp3 */,
+				040327B529953C140054F573 /* timeSound.mp3 */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -196,8 +211,13 @@
 				9BC24D4E299044E8009A90A1 /* mainSound.mp3 in Resources */,
 				9BB2B260299508A200F4E69C /* correctEasyAnswerSound.mp3 in Resources */,
 				0456DE8F298EFD1D005571A8 /* LaunchScreen.storyboard in Resources */,
+				FCE9759B2995996C0087AF2E /* takeMoneySound.mp3 in Resources */,
+				040327B629953C140054F573 /* timeSound.mp3 in Resources */,
 				0456DE8C298EFD1D005571A8 /* Assets.xcassets in Resources */,
+				FCE9759C2995996C0087AF2E /* millionWin.mp3 in Resources */,
 				9BB2B25C2995042B00F4E69C /* incorrectAnswerSound.mp3 in Resources */,
+				FCE9759F299599AB0087AF2E /* welcomeSound.mp3 in Resources */,
+				FCE9759A2995996C0087AF2E /* gameOverSound.mp3 in Resources */,
 				9BB2B25B2995042B00F4E69C /* correctAnswerSound.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -5,26 +5,28 @@
 //  Created by Kox on 04.02.2023.
 //
 
-import Foundation
 import UIKit
+import AVFoundation
 
 class StartViewController: UIViewController {
-  
     
+    var player = AVAudioPlayer()
+    
+    // создание фонового изображения
     let backgroundView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "background")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-    
+    // создание лого
     let logoView: UIImageView = {
         let image = UIImage(named: "logo")
         let imageView = UIImageView(image: image)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-    
+    // создание кнопки "Новая игра"
     var startButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = #colorLiteral(red: 0.1607843137, green: 0.1921568627, blue: 0.2980392157, alpha: 1)
@@ -33,12 +35,12 @@ class StartViewController: UIViewController {
         button.layer.borderWidth = 5
         button.setTitle("Новая игра", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 22)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 28)
         button.addTarget(self, action: #selector(startButtonPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    
+    // создание кнопки "Правила игры"
     var rulesButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = #colorLiteral(red: 0.1607843137, green: 0.1921568627, blue: 0.2980392157, alpha: 1)
@@ -47,7 +49,7 @@ class StartViewController: UIViewController {
         button.layer.borderWidth = 5
         button.setTitle("Правила игры", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 22)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 28)
         button.addTarget(self, action: #selector(rulesButtonPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -55,6 +57,8 @@ class StartViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        playSound()
         
         view.addSubview(backgroundView)
         view.addSubview(logoView)
@@ -67,6 +71,11 @@ class StartViewController: UIViewController {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        playSound()
+    }
+    
+    // настройка констрейнтов
     func setupConstraints() {
         
         NSLayoutConstraint.activate([
@@ -75,31 +84,44 @@ class StartViewController: UIViewController {
             backgroundView.topAnchor.constraint(equalTo: view.topAnchor),
             backgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 
-            startButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -130),
+            startButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -230),
             startButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
             startButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
             startButton.heightAnchor.constraint(equalToConstant: 60),
 
-            rulesButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
+            rulesButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -150),
             rulesButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
             rulesButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
             rulesButton.heightAnchor.constraint(equalToConstant: 60),
 
             logoView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             logoView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100),
-            logoView.widthAnchor.constraint(equalToConstant: 225),
-            logoView.heightAnchor.constraint(equalToConstant: 225)
+            logoView.widthAnchor.constraint(equalToConstant: 300),
+            logoView.heightAnchor.constraint(equalToConstant: 300)
         ])
     }
     
+    // действие по нажатию кнопки "Новая игра"
     @objc func startButtonPressed() {
         let gameStartVC = GameViewController()
         self.navigationController?.pushViewController(gameStartVC, animated: true)
+        player.stop()
     }
-    
+    // действие по нажатию кнопки "Правила игры"
     @objc func rulesButtonPressed() {
         let rulesVC = RulesViewController()
         self.navigationController?.pushViewController(rulesVC, animated: true)
+    }
+    // настройка фоновой музыки
+    func playSound() {
+        guard let url = Bundle.main.url(forResource: "mainSound", withExtension: "mp3") else { return }
+        do {
+            player = try AVAudioPlayer(contentsOf: url)
+            player.numberOfLoops = -1
+        } catch {
+            print ("sound error")
+        }
+        player.play()
     }
     
 }

@@ -10,7 +10,6 @@ import UIKit
 
 class QuestionViewController: UIViewController {
     
-        
     let logoView: UIImageView = {
        let imageView = UIImageView()
         imageView.image = UIImage(named: "image mini")
