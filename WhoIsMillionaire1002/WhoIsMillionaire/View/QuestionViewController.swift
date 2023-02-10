@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 
+var questionModel = QuestionModel()
+
 class QuestionViewController: UIViewController {
     
     var backgroundImageView: UIImageView  = {
@@ -18,10 +20,19 @@ class QuestionViewController: UIViewController {
     }()
     
     let logoView: UIImageView = {
-       let imageView = UIImageView()
+        let imageView = UIImageView()
         imageView.image = UIImage(named: "image mini")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
+    }()
+    
+    lazy var buttonBack: UIButton = {
+        let buttonBack = UIButton(type: .system)
+        buttonBack.setTitle("back", for:.normal)
+        buttonBack.titleLabel?.font = UIFont(name: "Roboto", size: 5)
+        buttonBack.addTarget(self, action: #selector(goBackGame), for: .touchUpInside)
+        buttonBack.translatesAutoresizingMaskIntoConstraints = false
+        return buttonBack
     }()
     
     
@@ -402,6 +413,18 @@ class QuestionViewController: UIViewController {
         return labelPrice1
     }()
     
+    // массив QuestionVC (табличка ответа)
+    func rectangleArray () -> [UIImageView] {
+        var rectangleArray: [UIImageView]
+        rectangleArray = [rectangleView1, rectangleView2, rectangleView3, rectangleView4, rectangleView5, rectangleView6, rectangleView7, rectangleView8, rectangleView9, rectangleView10, rectangleView11, rectangleView12, rectangleView13, rectangleView14, rectangleView15]
+        return rectangleArray
+    }
+    
+    @objc func goBackGame () {
+        self.navigationController?.popViewController(animated: true)
+    
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -456,19 +479,23 @@ class QuestionViewController: UIViewController {
         view.addSubview(labelPrice3)
         view.addSubview(labelPrice2)
         view.addSubview(labelPrice1)
+        view.addSubview(buttonBack)
+        navigationItem.hidesBackButton = true
     }
-
 }
 
     extension QuestionViewController {
         func setupConstaint() {
             NSLayoutConstraint.activate ([
+                buttonBack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
+                buttonBack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 5),
+                
                 backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor),
                 backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
                 backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
                 backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
                 
-                logoView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
+                logoView.topAnchor.constraint(equalTo: view.topAnchor, constant: 40),
                 logoView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
                 rectangleView15.topAnchor.constraint(equalTo: logoView.bottomAnchor, constant: 14),

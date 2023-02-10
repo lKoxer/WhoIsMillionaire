@@ -10,7 +10,7 @@ import UIKit
 
 class ResultViewController: UIViewController {
     
-    var backgroundImageView: UIImageView  = {
+    let backgroundImageView: UIImageView  = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "background")
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -44,7 +44,7 @@ class ResultViewController: UIViewController {
     }()
     
     
-    let buttonPlayyAgain: UIButton = {
+    lazy var buttonPlayyAgain: UIButton = {
         let buttonPlayAgain = UIButton(type: .system)
         buttonPlayAgain.setTitle("PLAY AGAIN", for:.normal)
         buttonPlayAgain.titleLabel?.font = UIFont(name: "Roboto", size: 5)
@@ -57,7 +57,7 @@ class ResultViewController: UIViewController {
     lazy var buttonExit: UIButton = {
         let buttonExit = UIButton(type: .system)
         
-        buttonExit.setTitle("EXIt", for: .normal)
+        buttonExit.setTitle("EXIT", for: .normal)
         buttonExit.titleLabel?.textColor = UIColor.white
         buttonExit.titleLabel?.font = UIFont(name: "Roboto", size: 55)
         buttonExit.backgroundColor = .green

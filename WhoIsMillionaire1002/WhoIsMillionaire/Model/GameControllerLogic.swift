@@ -10,7 +10,8 @@ import Foundation
 import UIKit
 import AVFoundation
 
-
+//создаем экземпляр класса
+let qvc = QuestionViewController()
 extension GameViewController { // вынес логику действий в игре в отдельный файл
     
     func answerButtonAction() {
@@ -30,7 +31,10 @@ extension GameViewController { // вынес логику действий в и
             
             // действие при верном ответе
             sender.setBackgroundImage(UIImage(named: "correctAnswerImage"), for: .normal)
+            let questtVC = QuestionViewController()
+            self.navigationController?.pushViewController(questtVC, animated: true)
             questionModel.nextQuestion()
+            questtVC.rectangleArray()[questionModel.questionNumber - 1].image = UIImage(named: "green")
             Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateUI), userInfo: nil, repeats: false)
             // музыка
             guard let url = Bundle.main.url(forResource: "correctEasyAnswerSound", withExtension: "mp3") else { return }
@@ -43,8 +47,12 @@ extension GameViewController { // вынес логику действий в и
             player.play()
             
         } else {
-            
             sender.setBackgroundImage(UIImage(named: "incorrectAnswerImage"), for: .normal)
+            // переход и замена цвета вью
+            let questtVC = QuestionViewController()
+            self.navigationController?.pushViewController(questtVC, animated: true)
+            questtVC.rectangleArray()[questionModel.questionNumber].image = UIImage(named: "red")
+            
             // таймер при нажатии кнопки неверного ответа
             Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(gameOver), userInfo: nil, repeats: false)
         }
@@ -81,8 +89,7 @@ extension GameViewController { // вынес логику действий в и
             player.play()
         
         // переход на экран результата
-        let resultVC = ResultViewController()
-        self.navigationController?.pushViewController(resultVC, animated: true)
+
     }
 }
 
