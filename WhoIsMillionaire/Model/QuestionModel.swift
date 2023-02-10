@@ -91,7 +91,7 @@ struct QuestionModel {
   
   // подсчет денег
   func countOfSumm() -> String {
-      return questions[questionNumber].summ
+    return questions[questionNumber].summ
   }
   
   // счетчик вопросов

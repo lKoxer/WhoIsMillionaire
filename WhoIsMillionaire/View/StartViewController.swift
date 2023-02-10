@@ -71,6 +71,10 @@ class StartViewController: UIViewController {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        playSound()
+    }
+    
     // настройка констрейнтов
     func setupConstraints() {
         
