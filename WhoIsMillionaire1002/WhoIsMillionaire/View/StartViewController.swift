@@ -27,7 +27,7 @@ class StartViewController: UIViewController {
         return imageView
     }()
     // создание кнопки "Новая игра"
-    var startButton: UIButton = {
+    lazy var startButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = #colorLiteral(red: 0.1607843137, green: 0.1921568627, blue: 0.2980392157, alpha: 1)
         button.layer.cornerRadius = 15
@@ -41,7 +41,7 @@ class StartViewController: UIViewController {
         return button
     }()
     // создание кнопки "Правила игры"
-    var rulesButton: UIButton = {
+    lazy var rulesButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = #colorLiteral(red: 0.1607843137, green: 0.1921568627, blue: 0.2980392157, alpha: 1)
         button.layer.cornerRadius = 15

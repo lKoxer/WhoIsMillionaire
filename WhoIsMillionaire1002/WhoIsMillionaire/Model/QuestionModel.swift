@@ -6,7 +6,9 @@
 //
 
 import Foundation
+import UIKit
 
+let quesVcC = QuestionViewController()
 struct QuestionModel {
 
   // счет игры
@@ -112,5 +114,13 @@ struct QuestionModel {
           return false
       }
   }
-  
+    
+//     func nextRectangle () -> UIImageView {
+//        quesVcC.rectangleArray()[questionNumber + 2]
+//      }
+//    func changeBackgroundView () -> UIImage {
+//       var x = qModel.nextRectangle().image
+//       x = UIImage(named: "green")
+//       return x!
+//   }
 }
