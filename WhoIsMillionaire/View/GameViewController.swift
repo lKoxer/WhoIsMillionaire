@@ -9,7 +9,14 @@
 import UIKit
 import AVFoundation
 
+//protocol UpdateUI {
+//    func updateUI()
+//}
+
 class GameViewController: UIViewController {
+    
+    var transfer = QuestionViewController()
+    
     
     // фоновое изображение
     var backgroundImageView: UIImageView  = {

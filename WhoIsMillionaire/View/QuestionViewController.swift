@@ -11,7 +11,7 @@ import UIKit
 class QuestionViewController: UIViewController {
     
     let logoView: UIImageView = {
-       let imageView = UIImageView()
+        let imageView = UIImageView()
         imageView.image = UIImage(named: "image mini")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -19,112 +19,112 @@ class QuestionViewController: UIViewController {
     
     
     let rectangleView15: UIImageView = {
-       let imageView15 = UIImageView()
+        let imageView15 = UIImageView()
         imageView15.image = UIImage(named: "blue")
         imageView15.translatesAutoresizingMaskIntoConstraints = false
         return imageView15
     }()
-  
+    
     let rectangleView14: UIImageView = {
-     let imageView14 = UIImageView()
+        let imageView14 = UIImageView()
         imageView14.image = UIImage(named: "violet")
         imageView14.translatesAutoresizingMaskIntoConstraints = false
         return imageView14
     }()
     
     let rectangleView13: UIImageView = {
-     let imageView13 = UIImageView()
+        let imageView13 = UIImageView()
         imageView13.image = UIImage(named: "violet")
         imageView13.translatesAutoresizingMaskIntoConstraints = false
         return imageView13
     }()
     
     let rectangleView12: UIImageView = {
-     let imageView12 = UIImageView()
+        let imageView12 = UIImageView()
         imageView12.image = UIImage(named: "violet")
         imageView12.translatesAutoresizingMaskIntoConstraints = false
         return imageView12
     }()
     
     let rectangleView11: UIImageView = {
-     let imageView11 = UIImageView()
+        let imageView11 = UIImageView()
         imageView11.image = UIImage(named: "violet")
         imageView11.translatesAutoresizingMaskIntoConstraints = false
         return imageView11
     }()
     
     let rectangleView10: UIImageView = {
-     let imageView10 = UIImageView()
+        let imageView10 = UIImageView()
         imageView10.image = UIImage(named: "blue")
         imageView10.translatesAutoresizingMaskIntoConstraints = false
         return imageView10
     }()
     
     let rectangleView9: UIImageView = {
-     let imageView9 = UIImageView()
+        let imageView9 = UIImageView()
         imageView9.image = UIImage(named: "violet")
         imageView9.translatesAutoresizingMaskIntoConstraints = false
         return imageView9
     }()
     
     let rectangleView8: UIImageView = {
-     let imageView8 = UIImageView()
+        let imageView8 = UIImageView()
         imageView8.image = UIImage(named: "violet")
         imageView8.translatesAutoresizingMaskIntoConstraints = false
         return imageView8
     }()
     
     let rectangleView7: UIImageView = {
-     let imageView7 = UIImageView()
+        let imageView7 = UIImageView()
         imageView7.image = UIImage(named: "violet")
         imageView7.translatesAutoresizingMaskIntoConstraints = false
         return imageView7
     }()
     
     let rectangleView6: UIImageView = {
-     let imageView6 = UIImageView()
+        let imageView6 = UIImageView()
         imageView6.image = UIImage(named: "violet")
         imageView6.translatesAutoresizingMaskIntoConstraints = false
         return imageView6
     }()
     
     let rectangleView5: UIImageView = {
-     let imageView5 = UIImageView()
+        let imageView5 = UIImageView()
         imageView5.image = UIImage(named: "blue")
         imageView5.translatesAutoresizingMaskIntoConstraints = false
         return imageView5
     }()
     
     let rectangleView4: UIImageView = {
-     let imageView4 = UIImageView()
+        let imageView4 = UIImageView()
         imageView4.image = UIImage(named: "violet")
         imageView4.translatesAutoresizingMaskIntoConstraints = false
         return imageView4
     }()
     
     let rectangleView3: UIImageView = {
-     let imageView3 = UIImageView()
+        let imageView3 = UIImageView()
         imageView3.image = UIImage(named: "violet")
         imageView3.translatesAutoresizingMaskIntoConstraints = false
         return imageView3
     }()
     
     let rectangleView2: UIImageView = {
-     let imageView2 = UIImageView()
+        let imageView2 = UIImageView()
         imageView2.image = UIImage(named: "violet")
         imageView2.translatesAutoresizingMaskIntoConstraints = false
         return imageView2
     }()
     
     let rectangleView1: UIImageView = {
-     let imageView1 = UIImageView()
+        let imageView1 = UIImageView()
         imageView1.image = UIImage(named: "violet")
         imageView1.translatesAutoresizingMaskIntoConstraints = false
         return imageView1
     }()
     
     let labelQuestion15: UILabel = {
-       let labelQuest15 = UILabel()
+        let labelQuest15 = UILabel()
         labelQuest15.text = "Вопрос 15"
         labelQuest15.font = UIFont(name: "Roboto", size: 20)
         labelQuest15.textColor = .white
@@ -133,7 +133,7 @@ class QuestionViewController: UIViewController {
     }()
     
     let labelQuestion14: UILabel = {
-       let labelQuest14 = UILabel()
+        let labelQuest14 = UILabel()
         labelQuest14.text = "Вопрос 14"
         labelQuest14.font = UIFont(name: "Roboto", size: 20)
         labelQuest14.textColor = .white
@@ -142,7 +142,7 @@ class QuestionViewController: UIViewController {
     }()
     
     let labelQuestion13: UILabel = {
-       let labelQuest13 = UILabel()
+        let labelQuest13 = UILabel()
         labelQuest13.text = "Вопрос 13"
         labelQuest13.font = UIFont(name: "Roboto", size: 20)
         labelQuest13.textColor = .white
@@ -151,7 +151,7 @@ class QuestionViewController: UIViewController {
     }()
     
     let labelQuestion12: UILabel = {
-       let labelQuest12 = UILabel()
+        let labelQuest12 = UILabel()
         labelQuest12.text = "Вопрос 12"
         labelQuest12.font = UIFont(name: "Roboto", size: 20)
         labelQuest12.textColor = .white
@@ -160,17 +160,17 @@ class QuestionViewController: UIViewController {
     }()
     
     let labelQuestion11: UILabel = {
-       let labelQuest11 = UILabel()
+        let labelQuest11 = UILabel()
         labelQuest11.text = "Вопрос 11"
         labelQuest11.font = UIFont(name: "Roboto", size: 20)
         labelQuest11.textColor = .white
         labelQuest11.translatesAutoresizingMaskIntoConstraints = false
         return labelQuest11
     }()
-
+    
     
     let labelQuestion10: UILabel = {
-       let labelQuest10 = UILabel()
+        let labelQuest10 = UILabel()
         labelQuest10.text = "Вопрос 10"
         labelQuest10.font = UIFont(name: "Roboto", size: 20)
         labelQuest10.textColor = .white
@@ -179,7 +179,7 @@ class QuestionViewController: UIViewController {
     }()
     
     let labelQuestion9: UILabel = {
-       let labelQuest9 = UILabel()
+        let labelQuest9 = UILabel()
         labelQuest9.text = "Вопрос 9"
         labelQuest9.font = UIFont(name: "Roboto", size: 20)
         labelQuest9.textColor = .white
@@ -188,7 +188,7 @@ class QuestionViewController: UIViewController {
     }()
     
     let labelQuestion8: UILabel = {
-       let labelQuest8 = UILabel()
+        let labelQuest8 = UILabel()
         labelQuest8.text = "Вопрос 8"
         labelQuest8.font = UIFont(name: "Roboto", size: 20)
         labelQuest8.textColor = .white
@@ -197,7 +197,7 @@ class QuestionViewController: UIViewController {
     }()
     
     let labelQuestion7: UILabel = {
-       let labelQuest7 = UILabel()
+        let labelQuest7 = UILabel()
         labelQuest7.text = "Вопрос 7"
         labelQuest7.font = UIFont(name: "Roboto", size: 20)
         labelQuest7.textColor = .white
@@ -207,7 +207,7 @@ class QuestionViewController: UIViewController {
     
     
     let labelQuestion6: UILabel = {
-       let labelQuest6 = UILabel()
+        let labelQuest6 = UILabel()
         labelQuest6.text = "Вопрос 6"
         labelQuest6.font = UIFont(name: "Roboto", size: 20)
         labelQuest6.textColor = .white
@@ -216,7 +216,7 @@ class QuestionViewController: UIViewController {
     }()
     
     let labelQuestion5: UILabel = {
-       let labelQuest5 = UILabel()
+        let labelQuest5 = UILabel()
         labelQuest5.text = "Вопрос 5"
         labelQuest5.font = UIFont(name: "Roboto", size: 20)
         labelQuest5.textColor = .white
@@ -225,7 +225,7 @@ class QuestionViewController: UIViewController {
     }()
     
     let labelQuestion4: UILabel = {
-       let labelQuest4 = UILabel()
+        let labelQuest4 = UILabel()
         labelQuest4.text = "Вопрос 4"
         labelQuest4.font = UIFont(name: "Roboto", size: 20)
         labelQuest4.textColor = .white
@@ -234,7 +234,7 @@ class QuestionViewController: UIViewController {
     }()
     
     let labelQuestion3: UILabel = {
-       let labelQuest3 = UILabel()
+        let labelQuest3 = UILabel()
         labelQuest3.text = "Вопрос 3"
         labelQuest3.font = UIFont(name: "Roboto", size: 20)
         labelQuest3.textColor = .white
@@ -243,7 +243,7 @@ class QuestionViewController: UIViewController {
     }()
     
     let labelQuestion2: UILabel = {
-       let labelQuest2 = UILabel()
+        let labelQuest2 = UILabel()
         labelQuest2.text = "Вопрос 2"
         labelQuest2.font = UIFont(name: "Roboto", size: 20)
         labelQuest2.textColor = .white
@@ -252,7 +252,7 @@ class QuestionViewController: UIViewController {
     }()
     
     let labelQuestion1: UILabel = {
-       let labelQuest1 = UILabel()
+        let labelQuest1 = UILabel()
         labelQuest1.text = "Вопрос 1"
         labelQuest1.font = UIFont(name: "Roboto", size: 20)
         labelQuest1.textColor = .white
@@ -261,7 +261,7 @@ class QuestionViewController: UIViewController {
     }()
     
     let labelPrice15: UILabel = {
-       let labelPrice15 = UILabel()
+        let labelPrice15 = UILabel()
         labelPrice15.text = "1 Миллион"
         labelPrice15.textColor = .white
         labelPrice15.font = UIFont(name: "Roboto", size: 20)
@@ -270,7 +270,7 @@ class QuestionViewController: UIViewController {
     }()
     
     let labelPrice14: UILabel = {
-       let labelPrice14 = UILabel()
+        let labelPrice14 = UILabel()
         labelPrice14.text = "500000 RUB"
         labelPrice14.textColor = .white
         labelPrice14.font = UIFont(name: "Roboto", size: 20)
@@ -279,7 +279,7 @@ class QuestionViewController: UIViewController {
     }()
     
     let labelPrice13: UILabel = {
-       let labelPrice13 = UILabel()
+        let labelPrice13 = UILabel()
         labelPrice13.text = "250000 RUB"
         labelPrice13.textColor = .white
         labelPrice13.font = UIFont(name: "Roboto", size: 20)
@@ -288,7 +288,7 @@ class QuestionViewController: UIViewController {
     }()
     
     let labelPrice12: UILabel = {
-       let labelPrice12 = UILabel()
+        let labelPrice12 = UILabel()
         labelPrice12.text = "125000 RUB"
         labelPrice12.textColor = .white
         labelPrice12.font = UIFont(name: "Roboto", size: 20)
@@ -297,7 +297,7 @@ class QuestionViewController: UIViewController {
     }()
     
     let labelPrice11: UILabel = {
-       let labelPrice11 = UILabel()
+        let labelPrice11 = UILabel()
         labelPrice11.text = "64000 RUB"
         labelPrice11.textColor = .white
         labelPrice11.font = UIFont(name: "Roboto", size: 20)
@@ -306,7 +306,7 @@ class QuestionViewController: UIViewController {
     }()
     
     let labelPrice10: UILabel = {
-       let labelPrice10 = UILabel()
+        let labelPrice10 = UILabel()
         labelPrice10.text = "32000 RUB"
         labelPrice10.textColor = .white
         labelPrice10.font = UIFont(name: "Roboto", size: 20)
@@ -315,7 +315,7 @@ class QuestionViewController: UIViewController {
     }()
     
     let labelPrice9: UILabel = {
-       let labelPrice9 = UILabel()
+        let labelPrice9 = UILabel()
         labelPrice9.text = "16000 RUB"
         labelPrice9.textColor = .white
         labelPrice9.font = UIFont(name: "Roboto", size: 20)
@@ -324,7 +324,7 @@ class QuestionViewController: UIViewController {
     }()
     
     let labelPrice8: UILabel = {
-       let labelPrice8 = UILabel()
+        let labelPrice8 = UILabel()
         labelPrice8.text = "8000 RUB"
         labelPrice8.textColor = .white
         labelPrice8.font = UIFont(name: "Roboto", size: 20)
@@ -333,7 +333,7 @@ class QuestionViewController: UIViewController {
     }()
     
     let labelPrice7: UILabel = {
-       let labelPrice7 = UILabel()
+        let labelPrice7 = UILabel()
         labelPrice7.text = "4000 RUB"
         labelPrice7.textColor = .white
         labelPrice7.font = UIFont(name: "Roboto", size: 20)
@@ -342,7 +342,7 @@ class QuestionViewController: UIViewController {
     }()
     
     let labelPrice6: UILabel = {
-       let labelPrice6 = UILabel()
+        let labelPrice6 = UILabel()
         labelPrice6.text = "2000 RUB"
         labelPrice6.textColor = .white
         labelPrice6.font = UIFont(name: "Roboto", size: 20)
@@ -351,7 +351,7 @@ class QuestionViewController: UIViewController {
     }()
     
     let labelPrice5: UILabel = {
-       let labelPrice5 = UILabel()
+        let labelPrice5 = UILabel()
         labelPrice5.text = "1000 RUB"
         labelPrice5.textColor = .white
         labelPrice5.font = UIFont(name: "Roboto", size: 20)
@@ -360,7 +360,7 @@ class QuestionViewController: UIViewController {
     }()
     
     let labelPrice4: UILabel = {
-       let labelPrice4 = UILabel()
+        let labelPrice4 = UILabel()
         labelPrice4.text = "500 RUB"
         labelPrice4.textColor = .white
         labelPrice4.font = UIFont(name: "Roboto", size: 20)
@@ -369,7 +369,7 @@ class QuestionViewController: UIViewController {
     }()
     
     let labelPrice3: UILabel = {
-       let labelPrice3 = UILabel()
+        let labelPrice3 = UILabel()
         labelPrice3.text = "300 RUB"
         labelPrice3.textColor = .white
         labelPrice3.font = UIFont(name: "Roboto", size: 20)
@@ -378,7 +378,7 @@ class QuestionViewController: UIViewController {
     }()
     
     let labelPrice2: UILabel = {
-       let labelPrice2 = UILabel()
+        let labelPrice2 = UILabel()
         labelPrice2.text = "200 RUB"
         labelPrice2.textColor = .white
         labelPrice2.font = UIFont(name: "Roboto", size: 20)
@@ -387,7 +387,7 @@ class QuestionViewController: UIViewController {
     }()
     
     let labelPrice1: UILabel = {
-       let labelPrice1 = UILabel()
+        let labelPrice1 = UILabel()
         labelPrice1.text = "100 RUB"
         labelPrice1.textColor = .white
         labelPrice1.font = UIFont(name: "Roboto", size: 20)
@@ -397,10 +397,22 @@ class QuestionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "View")!)
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
         setupView()
         setupConstaint()
+       
+        let backButtonItem = UIBarButtonItem(title: "Custom Back", style: .plain, target: self, action: #selector(backButtonTapped))
+        navigationItem.leftBarButtonItem = backButtonItem
+        backButtonItem.title = "К игре"
     }
+    
+    @objc func backButtonTapped() {
+        let gameVC = GameViewController()
+        self.navigationController?.pushViewController(gameVC, animated: true)
+        gameVC.updateUI()
+        
+    }
+    
     
     func setupView () {
         view.addSubview(logoView)
