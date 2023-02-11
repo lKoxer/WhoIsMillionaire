@@ -148,6 +148,12 @@ extension GameViewController { // вынес логику действий в и
     
     // неверный ответ - музыка
     @objc func gameOver() {
+        
+        if let domain = Bundle.main.bundleIdentifier { // сброc UserDefaults
+            UserDefaults.standard.removePersistentDomain(forName: domain) // сброc UserDefaults
+//            return true
+        }
+        
         // музыка неверного ответа
             guard let url = Bundle.main.url(forResource: "incorrectAnswerSound", withExtension: "mp3") else { return }
             do {
