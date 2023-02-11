@@ -10,6 +10,19 @@ import Foundation
 import UIKit
 import AVFoundation
 
+class QuestionData {
+    static let shared = QuestionData()
+//    private init() {}
+    var currentQuestionNumber = 0
+    
+}
+
+// Store the current question number
+//QuestionData.shared.currentQuestionNumber = 3
+
+// Retrieve the current question number
+//let questionNumber = QuestionData.shared.currentQuestionNumber
+
 
 extension GameViewController { // вынес логику действий в игре в отдельный файл
     
@@ -35,7 +48,7 @@ extension GameViewController { // вынес логику действий в и
         
         // ставим кнопкам ответы
         guard let userAnswer = sender.currentTitle else { return print("answersMistake") }
-        
+//
         
         // проверяем ответ, то меняем фон кнопки на соотвествующий
         let userGotItRight = questionModel.checkAnswer(userAnswer: userAnswer)
@@ -65,12 +78,14 @@ extension GameViewController { // вынес логику действий в и
             }
             
             Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(updateCorrectAnswer), userInfo: nil, repeats: false)
+           
+//            Timer.scheduledTimer(timeInterval: 6, target: self, selector: #selector(updateUI), userInfo: nil, repeats: false)
             
+            
+
             Timer.scheduledTimer(timeInterval: 6, target: self, selector: #selector(goToQuestionVC), userInfo: nil, repeats: false)
             
-            Timer.scheduledTimer(timeInterval: 7, target: self, selector: #selector(updateUI), userInfo: nil, repeats: false)
 
-      
             
         } else {
             
@@ -81,7 +96,7 @@ extension GameViewController { // вынес логику действий в и
             }
             // таймер при нажатии кнопки неверного ответа
 
-            Timer.scheduledTimer(timeInterval: 6, target: self, selector: #selector(gameOver), userInfo: nil, repeats: false)
+            Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(gameOver), userInfo: nil, repeats: false)
             prizeAmount = questionModel.countOfSum()
 
         }
@@ -117,10 +132,31 @@ extension GameViewController { // вынес логику действий в и
         roundTimer()
 
         // след вопрос на экране
+        
+        
+        
         questionLabel.text = questionModel.getQuestionText()
+        print("next questions")
         
         // нам нужно добраться до ответов и адаптировать заголовки кнопок под эти ответы
+        
+//        let answerChoices = questionModel.getAnswers()
+
+//        var questionModel = QuestionModel()
         let answerChoices = questionModel.getAnswers()
+        let numberOfQuestion = questionModel.questionNumber
+        UserDefaults.standard.set(numberOfQuestion, forKey: "questionNumber")
+        
+        
+        
+//
+//        questionModel.questionNumber = numberOfQuestion
+//        var model = QuestionModel()
+//        model.questionNumber = QuestionData().currentQuestionNumber
+//        let answerChoices = model.getAnswers()
+//        model.questionNumber = QuestionData().currentQuestionNumber
+        
+//        answerChoices.synchronize()
         answerButtonA.setTitle(answerChoices[0], for: .normal)
         answerButtonB.setTitle(answerChoices[1], for: .normal)
         answerButtonC.setTitle(answerChoices[2], for: .normal)
@@ -128,10 +164,18 @@ extension GameViewController { // вынес логику действий в и
         questionSummLabel.text = questionModel.score
         answerButtonSetup()
         questionNumberLabel.text = "Вопрос \(questionModel.questionNumber + 1)"
+        
+
     }
     
     // неверный ответ - музыка
     @objc func gameOver() {
+        
+        if let domain = Bundle.main.bundleIdentifier { // сброc UserDefaults
+            UserDefaults.standard.removePersistentDomain(forName: domain) // сброc UserDefaults
+//            return true
+        }
+        
         // музыка неверного ответа
             guard let url = Bundle.main.url(forResource: "incorrectAnswerSound", withExtension: "mp3") else { return }
             do {
@@ -151,7 +195,9 @@ extension GameViewController { // вынес логику действий в и
     }
     // переход на Question VC
     @objc func goToQuestionVC() {
-        self.stopSound()
+        updateUI()
+        stopTimer()
+        stopSound()
         let resultVC = QuestionViewController()
         self.navigationController?.pushViewController(resultVC, animated: true)
 

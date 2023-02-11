@@ -101,6 +101,10 @@ class ResultViewController: UIViewController { //изменил на имя с �
         setupView()
         setupConstaints()
         self.navigationItem.hidesBackButton = true // скрытие кнопки назад, добавил Павел
+        
+        if let data = Bundle.main.bundleIdentifier { // сброc UserDefaults
+            UserDefaults.standard.removePersistentDomain(forName: data) // сброc UserDefaults
+        }
     }
 
         
