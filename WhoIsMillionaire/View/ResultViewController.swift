@@ -11,6 +11,8 @@ import AVFoundation
 
 class ResultViewController: UIViewController { //изменил на имя с большой буквы
 
+    var resultOfTheGame = ""
+
     var player = AVAudioPlayer()
     var questionModel = QuestionModel()
     
@@ -35,6 +37,8 @@ class ResultViewController: UIViewController { //изменил на имя с �
         resultLabel.font = UIFont.boldSystemFont(ofSize: 40)
         resultLabel.textColor = UIColor.white
         resultLabel.shadowColor = #colorLiteral(red: 0.1607843137, green: 0.1921568627, blue: 0.2980392157, alpha: 1)
+        resultLabel.adjustsFontSizeToFitWidth = true
+        resultLabel.minimumScaleFactor = 0.5
         resultLabel.text = "Вы выиграли"
         resultLabel.layer.shadowRadius = 3.0
         resultLabel.layer.shadowOpacity = 1.0
@@ -102,16 +106,17 @@ class ResultViewController: UIViewController { //изменил на имя с �
             UserDefaults.standard.removePersistentDomain(forName: data) // сброc UserDefaults
         }
     }
-    
-    func setupView() {
-        view.addSubview(logoView)
-        view.addSubview(resultLabel)
-        view.addSubview(buttonPlayyAgain)
-        view.addSubview(buttonExit)
-        view.addSubview(sumLabel)
-        sumLabel.text = questionModel.countOfSumm()
-    }
-    
+
+        
+        func setupView() {
+            view.addSubview(logoView)
+            view.addSubview(resultLabel)
+            view.addSubview(buttonPlayyAgain)
+            view.addSubview(buttonExit)
+            view.addSubview(sumLabel)
+            sumLabel.text = resultOfTheGame
+        }
+
     
     @objc func playAgainPressed() {
         let gameStartVC = GameViewController()
@@ -131,7 +136,7 @@ class ResultViewController: UIViewController { //изменил на имя с �
             try AVAudioSession.sharedInstance().setActive(true)
             
             player = try AVAudioPlayer(contentsOf: url)
-            player.numberOfLoops = 0 // убрал повторы, звук бесит при отладке
+
         } catch {
             print ("sound error")
         }
@@ -139,40 +144,38 @@ class ResultViewController: UIViewController { //изменил на имя с �
         player.play()
         
             }
-        }
 
     func stopPlay(_ player: AVAudioPlayer, successfully flag: Bool) {
         player.stop()
     }
     
-    extension ResultViewController {
-        
-        func setupConstaints() {
-            NSLayoutConstraint.activate ([
-                logoView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 19),
-                logoView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                
-                resultLabel.topAnchor.constraint(equalTo: logoView.bottomAnchor, constant: 5),
-                resultLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                
-                sumLabel.topAnchor.constraint(equalTo: resultLabel.bottomAnchor, constant: 10),
-                sumLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                
-                buttonPlayyAgain.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -230),
-                buttonPlayyAgain.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-                buttonPlayyAgain.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
-                buttonPlayyAgain.heightAnchor.constraint(equalToConstant: 60),
-                
-                buttonExit.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -150),
-                buttonExit.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-                buttonExit.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
-                buttonExit.heightAnchor.constraint(equalToConstant: 60),
-                
-                backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-                backgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                backgroundView.topAnchor.constraint(equalTo: view.topAnchor),
-                backgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-            ])
-        }
+
+    func setupConstaints() {
+        NSLayoutConstraint.activate ([
+            logoView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 19),
+            logoView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            resultLabel.topAnchor.constraint(equalTo: logoView.bottomAnchor, constant: 5),
+            resultLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            sumLabel.topAnchor.constraint(equalTo: resultLabel.bottomAnchor, constant: 10),
+            sumLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            buttonPlayyAgain.topAnchor.constraint(equalTo: sumLabel.bottomAnchor, constant: 60),
+            buttonPlayyAgain.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+            buttonPlayyAgain.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+            buttonPlayyAgain.heightAnchor.constraint(equalToConstant: 60),
+
+            buttonExit.topAnchor.constraint(equalTo: buttonPlayyAgain.bottomAnchor, constant: 20),
+            buttonExit.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+            buttonExit.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+            buttonExit.heightAnchor.constraint(equalToConstant: 60),
+            
+            backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            backgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            backgroundView.topAnchor.constraint(equalTo: view.topAnchor),
+            backgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
     }
+}
 

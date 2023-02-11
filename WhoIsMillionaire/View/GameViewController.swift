@@ -19,10 +19,12 @@ import AVFoundation
 
 class GameViewController: UIViewController {
     
+
     var transfer = QuestionViewController()
-    
+    var prizeAmount = ""
 //    weak var delegate: SettingsViewControllerDelegate?
     
+
     // фоновое изображение
     var backgroundImageView: UIImageView  = {
         let imageView = UIImageView()
