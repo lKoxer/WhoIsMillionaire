@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 
 class ResultViewController: UIViewController { //изменил на имя с большой буквы
-    
+    var resultOfTheGame = ""
     var player = AVAudioPlayer()
     var questionModel = QuestionModel()
     
@@ -35,6 +35,8 @@ class ResultViewController: UIViewController { //изменил на имя с �
         resultLabel.font = UIFont.boldSystemFont(ofSize: 40)
         resultLabel.textColor = UIColor.white
         resultLabel.shadowColor = #colorLiteral(red: 0.1607843137, green: 0.1921568627, blue: 0.2980392157, alpha: 1)
+        resultLabel.adjustsFontSizeToFitWidth = true
+        resultLabel.minimumScaleFactor = 0.5
         resultLabel.text = "Вы выиграли"
         resultLabel.layer.shadowRadius = 3.0
         resultLabel.layer.shadowOpacity = 1.0
@@ -105,9 +107,9 @@ class ResultViewController: UIViewController { //изменил на имя с �
             view.addSubview(buttonPlayyAgain)
             view.addSubview(buttonExit)
             view.addSubview(sumLabel)
-            sumLabel.text = questionModel.countOfSumm()
+            sumLabel.text = resultOfTheGame
         }
-    
+
     
     @objc func playAgainPressed() {
         let gameStartVC = GameViewController()
@@ -123,7 +125,6 @@ class ResultViewController: UIViewController { //изменил на имя с �
         guard let url = Bundle.main.url(forResource: "gameOverSound", withExtension: "mp3") else { return }
         do {
             player = try AVAudioPlayer(contentsOf: url)
-            player.numberOfLoops = -1
         } catch {
             print ("sound error")
         }

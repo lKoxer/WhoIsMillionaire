@@ -11,6 +11,8 @@ import AVFoundation
 
 class GameViewController: UIViewController {
     
+    // добавила переменную для того, чтобы корректно передавать сумму выигрыша
+    var prizeAmount = ""
     // фоновое изображение
     var backgroundImageView: UIImageView  = {
         let imageView = UIImageView()
