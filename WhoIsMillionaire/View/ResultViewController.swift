@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 
 class ResultViewController: UIViewController { //изменил на имя с большой буквы
-    
+
     var player = AVAudioPlayer()
     var questionModel = QuestionModel()
     
@@ -23,7 +23,7 @@ class ResultViewController: UIViewController { //изменил на имя с �
     }()
     
     let logoView: UIImageView = {
-       let logoImage = UIImageView ()
+        let logoImage = UIImageView ()
         logoImage.image = UIImage(named: "logo")
         logoImage.translatesAutoresizingMaskIntoConstraints = false
         return logoImage
@@ -60,7 +60,7 @@ class ResultViewController: UIViewController { //изменил на имя с �
         sumLabel.translatesAutoresizingMaskIntoConstraints = false
         return sumLabel
     }()
-
+    
     
     let buttonPlayyAgain: UIButton = {
         let buttonPlayAgain = UIButton()
@@ -98,15 +98,15 @@ class ResultViewController: UIViewController { //изменил на имя с �
         setupConstaints()
         self.navigationItem.hidesBackButton = true // скрытие кнопки назад, добавил Павел
     }
-        
-        func setupView() {
-            view.addSubview(logoView)
-            view.addSubview(resultLabel)
-            view.addSubview(buttonPlayyAgain)
-            view.addSubview(buttonExit)
-            view.addSubview(sumLabel)
-            sumLabel.text = questionModel.countOfSumm()
-        }
+    
+    func setupView() {
+        view.addSubview(logoView)
+        view.addSubview(resultLabel)
+        view.addSubview(buttonPlayyAgain)
+        view.addSubview(buttonExit)
+        view.addSubview(sumLabel)
+        sumLabel.text = questionModel.countOfSumm()
+    }
     
     
     @objc func playAgainPressed() {
@@ -122,42 +122,53 @@ class ResultViewController: UIViewController { //изменил на имя с �
     func playEndSound() {
         guard let url = Bundle.main.url(forResource: "gameOverSound", withExtension: "mp3") else { return }
         do {
+            
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+            
             player = try AVAudioPlayer(contentsOf: url)
-            player.numberOfLoops = -1
+            player.numberOfLoops = 0 // убрал повторы, звук бесит при отладке
         } catch {
             print ("sound error")
         }
+  
         player.play()
-    }
-}
+        
+            }
+        }
 
-extension ResultViewController {
+    func stopPlay(_ player: AVAudioPlayer, successfully flag: Bool) {
+        player.stop()
+    }
     
-    func setupConstaints() {
-        NSLayoutConstraint.activate ([
-            logoView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 19),
-            logoView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            
-            resultLabel.topAnchor.constraint(equalTo: logoView.bottomAnchor, constant: 5),
-            resultLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            
-            sumLabel.topAnchor.constraint(equalTo: resultLabel.bottomAnchor, constant: 10),
-            sumLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            
-            buttonPlayyAgain.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -230),
-            buttonPlayyAgain.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-            buttonPlayyAgain.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
-            buttonPlayyAgain.heightAnchor.constraint(equalToConstant: 60),
-
-            buttonExit.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -150),
-            buttonExit.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-            buttonExit.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
-            buttonExit.heightAnchor.constraint(equalToConstant: 60),
-            
-            backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            backgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            backgroundView.topAnchor.constraint(equalTo: view.topAnchor),
-            backgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-        ])
+    extension ResultViewController {
+        
+        func setupConstaints() {
+            NSLayoutConstraint.activate ([
+                logoView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 19),
+                logoView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                
+                resultLabel.topAnchor.constraint(equalTo: logoView.bottomAnchor, constant: 5),
+                resultLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                
+                sumLabel.topAnchor.constraint(equalTo: resultLabel.bottomAnchor, constant: 10),
+                sumLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                
+                buttonPlayyAgain.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -230),
+                buttonPlayyAgain.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+                buttonPlayyAgain.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+                buttonPlayyAgain.heightAnchor.constraint(equalToConstant: 60),
+                
+                buttonExit.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -150),
+                buttonExit.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+                buttonExit.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+                buttonExit.heightAnchor.constraint(equalToConstant: 60),
+                
+                backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+                backgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                backgroundView.topAnchor.constraint(equalTo: view.topAnchor),
+                backgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            ])
+        }
     }
-}
+

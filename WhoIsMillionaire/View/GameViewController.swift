@@ -105,7 +105,7 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        playTimeSound()
+//        playTimeSound()
         setupUI()
 //        roundTimer()
         fiftyFiftyLogic()
@@ -129,7 +129,10 @@ class GameViewController: UIViewController {
         
         // переход на экран результата игры
         let okAction = UIAlertAction(title: "Да", style: .default) { _ in
-            self.gameOver()
+            self.stopTimer()
+            self.stopSound()
+            let resultVC = ResultViewController()
+            self.navigationController?.pushViewController(resultVC, animated: true)
         }
         // отмена выхода
         let cancelAction = UIAlertAction(title: "Нет", style: .cancel, handler: nil)

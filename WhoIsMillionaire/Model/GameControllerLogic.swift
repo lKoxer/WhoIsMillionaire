@@ -122,9 +122,20 @@ extension GameViewController { // вынес логику действий в и
         
         // переход на экран результата
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+            self.stopSound()
             let resultVC = ResultViewController()
             self.navigationController?.pushViewController(resultVC, animated: true)
         }
+    }
+    
+    // остановка музыки
+    func stopSound() {
+        player.stop()
+    }
+    
+    // остановка таймера
+    func stopTimer() {
+        timer.invalidate()
     }
 }
 
