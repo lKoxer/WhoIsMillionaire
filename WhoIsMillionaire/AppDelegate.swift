@@ -22,9 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //            window?.rootViewController = UINavigationController(rootViewController: GameViewController())
         
         
-        if let domain = Bundle.main.bundleIdentifier {
-            UserDefaults.standard.removePersistentDomain(forName: domain)
-//            return true
+        if let data = Bundle.main.bundleIdentifier {
+            UserDefaults.standard.removePersistentDomain(forName: data)
         }
         return true
     }

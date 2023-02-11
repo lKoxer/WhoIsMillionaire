@@ -76,7 +76,7 @@ extension GameViewController { // вынес логику действий в и
                 sender.setBackgroundImage(UIImage(named: "incorrectAnswerImage"), for: .normal)
             }
             // таймер при нажатии кнопки неверного ответа
-            Timer.scheduledTimer(timeInterval: 6, target: self, selector: #selector(gameOver), userInfo: nil, repeats: false)
+            Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(gameOver), userInfo: nil, repeats: false)
         }
      
     }
