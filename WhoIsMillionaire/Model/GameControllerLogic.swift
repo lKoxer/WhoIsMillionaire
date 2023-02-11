@@ -21,17 +21,27 @@ extension GameViewController { // вынес логику действий в и
     
     @objc func answerButtonPressed(_ sender: UIButton) {
         
+//        fiveSecDelaySound() !!!!
+        
+        timerLabel.text = "Ответ принят"
+        
         // ставим кнопкам ответы
-        guard var userAnswer = sender.currentTitle else { return print("answersMistake") }
+        guard let userAnswer = sender.currentTitle else { return print("answersMistake") }
+        
+        
         // проверяем ответ, то меняем фон кнопки на соотвествующий
         let userGotItRight = questionModel.checkAnswer(userAnswer: userAnswer)
         
         if userGotItRight {
             
+            
+//            Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(updateAnswerAction), userInfo: nil, repeats: false)
             // действие при верном ответе
             sender.setBackgroundImage(UIImage(named: "correctAnswerImage"), for: .normal)
             questionModel.nextQuestion()
-            Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateUI), userInfo: nil, repeats: false)
+            Timer.scheduledTimer(timeInterval: 6, target: self, selector: #selector(updateUI), userInfo: nil, repeats: false)
+      
+            
             // музыка
             guard let url = Bundle.main.url(forResource: "correctEasyAnswerSound", withExtension: "mp3") else { return }
             do {
@@ -46,21 +56,23 @@ extension GameViewController { // вынес логику действий в и
             
             sender.setBackgroundImage(UIImage(named: "incorrectAnswerImage"), for: .normal)
             // таймер при нажатии кнопки неверного ответа
-            Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(gameOver), userInfo: nil, repeats: false)
+            Timer.scheduledTimer(timeInterval: 6, target: self, selector: #selector(gameOver), userInfo: nil, repeats: false)
         }
      
     }
+    
+    
     
     // логика смены вопроса на экране
     @objc func updateUI() {
 
         timer.invalidate() //стопим таймер
         totalTime = 30 //обнуляем время
+        timerLabel.text = "30"
         secondPassed = 0
         playTimeSound()
         roundTimer()
 
-  
         // след вопрос на экране
         questionLabel.text = questionModel.getQuestionText()
         
