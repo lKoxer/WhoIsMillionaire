@@ -21,13 +21,27 @@ extension GameViewController { // вынес логику действий в и
     
     @objc func answerButtonPressed(_ sender: UIButton) {
         
+        // музыка ожидания
+        guard let url = Bundle.main.url(forResource: "fiveSecWaitAnswerSound", withExtension: "mp3") else { return }
+        do {
+            player = try AVAudioPlayer(contentsOf: url)
+        } catch {
+            print ("sound error")
+        }
+        player.play()
+        
+        
+        timerLabel.text = "Ответ принят"
+        
         // ставим кнопкам ответы
-        guard var userAnswer = sender.currentTitle else { return print("answersMistake") }
+        guard let userAnswer = sender.currentTitle else { return print("answersMistake") }
+        
+        
         // проверяем ответ, то меняем фон кнопки на соотвествующий
         let userGotItRight = questionModel.checkAnswer(userAnswer: userAnswer)
-        
         if userGotItRight {
             
+
             // действие при верном ответе
             sender.setBackgroundImage(UIImage(named: "correctAnswerImage"), for: .normal)
             questionModel.nextQuestion()
@@ -39,30 +53,60 @@ extension GameViewController { // вынес логику действий в и
                 player = try AVAudioPlayer(contentsOf: url)
             } catch {
                 print ("sound error")
+
             }
-            // затем снова главная музыка
-            player.play()
+            
+            
+            
+            Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(updateCorrectAnswer), userInfo: nil, repeats: false)
+            
+            Timer.scheduledTimer(timeInterval: 7, target: self, selector: #selector(updateUI), userInfo: nil, repeats: false)
+      
             
         } else {
             
-            sender.setBackgroundImage(UIImage(named: "incorrectAnswerImage"), for: .normal)
+            sender.setBackgroundImage(UIImage(named: "waitingAnswerImage"), for: .normal)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+                sender.setBackgroundImage(UIImage(named: "incorrectAnswerImage"), for: .normal)
+            }
             // таймер при нажатии кнопки неверного ответа
+
             Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(gameOver), userInfo: nil, repeats: false)
             prizeAmount = questionModel.countOfSum()
+
         }
      
     }
+    
+    
+    // логика смены фона кнопки верного ответа
+    @objc func updateCorrectAnswer() {
+        
+        //загрузка след вопросов
+        questionModel.nextQuestion()
+        //звук
+        guard let url = Bundle.main.url(forResource: "correctEasyAnswerSound", withExtension: "mp3") else { return }
+        do {
+            player = try AVAudioPlayer(contentsOf: url)
+        } catch {
+            print ("sound error")
+        }
+        // затем снова главная музыка
+        player.play()
+    }
+    
     
     // логика смены вопроса на экране
     @objc func updateUI() {
 
         timer.invalidate() //стопим таймер
         totalTime = 30 //обнуляем время
+        timerLabel.text = "30"
         secondPassed = 0
         playTimeSound()
         roundTimer()
 
-  
         // след вопрос на экране
         questionLabel.text = questionModel.getQuestionText()
         
@@ -89,9 +133,11 @@ extension GameViewController { // вынес логику действий в и
             player.play()
         
         // переход на экран результата
+
         let resultVC = ResultViewController()
         self.navigationController?.pushViewController(resultVC, animated: true)
         resultVC.resultOfTheGame = prizeAmount
+
     }
 }
 

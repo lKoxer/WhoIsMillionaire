@@ -31,6 +31,7 @@ class GameViewController: UIViewController {
         let button = UIButton(type: .system)
         button.showsTouchWhenHighlighted = true
         button.setBackgroundImage(UIImage(named: "mainLogo"), for: .normal)
+        button.addTarget(self, action: #selector(stopButtonPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -60,6 +61,8 @@ class GameViewController: UIViewController {
         label.text = "Вопрос 1"
         label.textColor = .white
         label.textAlignment = .left
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.7
         label.font = UIFont(name: "Roboto-Medium", size: 40)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -70,7 +73,9 @@ class GameViewController: UIViewController {
         let label = UILabel()
 //        label.text = "500 RUB"
         label.textAlignment = .right
-        label.layer.cornerRadius = 10
+//        label.layer.cornerRadius = 10
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.7
         label.textColor = .white
         label.font = UIFont(name: "Roboto-Medium", size: 40)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -108,20 +113,21 @@ class GameViewController: UIViewController {
         fiftyFiftyLogic()
         hallHelpLogic()
         friendCallLogic()
-        stopButtonAction(button: stopLogoButton)
+//        stopButtonAction(button: stopLogoButton)
         answerButtonAction()
         updateUI()
+        self.navigationItem.hidesBackButton = true
         
     }
     
     
     // метод остановки игры ч-з нажатие на стоп и алерт
-    func stopButtonAction(button: UIButton) {
-        button.addTarget(self, action: #selector(stopButtonPressed), for: .touchUpInside)
-    }
+//    func stopButtonAction(button: UIButton) {
+//        button.addTarget(self, action: #selector(stopButtonPressed), for: .touchUpInside)
+//    }
     
     @objc func stopButtonPressed(sender: UIButton) {
-        let alertController = UIAlertController(title: "Выход", message: "Вы хотите закончить игру?", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Выход", message: "Вы хотите закончить игру и забрать деньги?", preferredStyle: .alert)
         
         // переход на экран результата игры
         let okAction = UIAlertAction(title: "Да", style: .default) { _ in
@@ -167,11 +173,17 @@ class GameViewController: UIViewController {
     
     @objc func updateTimerLabel() {
     
+        if timerLabel.text == "Ответ принят" {
+            timer.invalidate()
+            secondPassed = 40
+        }
+       
         if secondPassed < totalTime {
             timerLabel.text = String(totalTime)
             totalTime -= 1
-            
-        } else {
+        }
+        
+        if totalTime == 0 {
             timer.invalidate()
             gameOver()
         }
@@ -217,7 +229,7 @@ class GameViewController: UIViewController {
         let questionSummStackView = UIStackView(arrangedSubviews: [questionNumberLabel, timerLabel, questionSummLabel])
         questionSummStackView.axis = .horizontal
         questionSummStackView.alignment = .center
-        questionSummStackView.spacing = 60
+        questionSummStackView.spacing = 30
         questionSummStackView.distribution = .equalCentering
         questionSummStackView.translatesAutoresizingMaskIntoConstraints = false
         
