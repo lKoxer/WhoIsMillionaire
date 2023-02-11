@@ -41,10 +41,19 @@ extension GameViewController { // вынес логику действий в и
         let userGotItRight = questionModel.checkAnswer(userAnswer: userAnswer)
         if userGotItRight {
             
-            sender.setBackgroundImage(UIImage(named: "waitingAnswerImage"), for: .normal)
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-                sender.setBackgroundImage(UIImage(named: "correctAnswerImage"), for: .normal)
+
+            // действие при верном ответе
+            sender.setBackgroundImage(UIImage(named: "correctAnswerImage"), for: .normal)
+            questionModel.nextQuestion()
+            Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateUI), userInfo: nil, repeats: false)
+            prizeAmount = questionModel.countOfSum()
+            // музыка
+            guard let url = Bundle.main.url(forResource: "correctEasyAnswerSound", withExtension: "mp3") else { return }
+            do {
+                player = try AVAudioPlayer(contentsOf: url)
+            } catch {
+                print ("sound error")
+
             }
             
             Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(updateCorrectAnswer), userInfo: nil, repeats: false)
@@ -63,7 +72,10 @@ extension GameViewController { // вынес логику действий в и
                 sender.setBackgroundImage(UIImage(named: "incorrectAnswerImage"), for: .normal)
             }
             // таймер при нажатии кнопки неверного ответа
-            Timer.scheduledTimer(timeInterval: 6, target: self, selector: #selector(gameOver), userInfo: nil, repeats: false)
+
+            Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(gameOver), userInfo: nil, repeats: false)
+            prizeAmount = questionModel.countOfSum()
+
         }
      
     }
@@ -122,11 +134,14 @@ extension GameViewController { // вынес логику действий в и
             player.play()
         
         // переход на экран результата
+
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
             self.stopSound()
             let resultVC = QuestionViewController()
+             resultVC.resultOfTheGame = prizeAmount
             self.navigationController?.pushViewController(resultVC, animated: true)
         }
+
     }
     // переход на Question VC
     @objc func goToQuestionVC() {

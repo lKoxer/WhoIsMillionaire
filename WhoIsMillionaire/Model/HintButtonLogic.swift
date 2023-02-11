@@ -24,6 +24,7 @@ extension GameViewController {
         let okAction = UIAlertAction(title: "Да", style: .default) { _ in
             self.removeHalfAnswers()
             self.fiftyFiftyButton.isEnabled = false
+            self.fiftyFiftyButton.setBackgroundImage(UIImage(named: "fiftyFiftyNotAvailable"), for: .normal)
         }
         // отмена выхода
         let cancelAction = UIAlertAction(title: "Нет", style: .cancel, handler: nil)
@@ -73,6 +74,7 @@ extension GameViewController {
         let okAction = UIAlertAction(title: "Да", style: .default) { _ in
             self.hallHelpAnswers()
             self.hallHelpButton.isEnabled = false
+            self.hallHelpButton.setBackgroundImage(UIImage(named: "hallHelpNotAvailable"), for: .normal)
         }
         // отмена выхода
         let cancelAction = UIAlertAction(title: "Нет", style: .cancel, handler: nil)
@@ -149,6 +151,7 @@ extension GameViewController {
         let okAction = UIAlertAction(title: "Да", style: .default) { _ in
             self.friendHelpAnswer()
             self.callToFriendButton.isEnabled = false
+            self.callToFriendButton.setBackgroundImage(UIImage(named: "callFriendNotAvailable"), for: .normal)
         }
         // отмена выхода
         let cancelAction = UIAlertAction(title: "Нет", style: .cancel, handler: nil)

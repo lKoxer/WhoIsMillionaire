@@ -15,9 +15,10 @@ import AVFoundation
 
 class GameViewController: UIViewController {
     
-    var transfer = QuestionViewController()
-    
-    
+
+    // добавила переменную для того, чтобы корректно передавать сумму выигрыша
+    var prizeAmount = ""
+
     // фоновое изображение
     var backgroundImageView: UIImageView  = {
         let imageView = UIImageView()
