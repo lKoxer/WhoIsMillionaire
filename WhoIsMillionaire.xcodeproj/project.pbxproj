@@ -26,6 +26,7 @@
 		9BB2B25C2995042B00F4E69C /* incorrectAnswerSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BB2B25A2995042B00F4E69C /* incorrectAnswerSound.mp3 */; };
 		9BB2B260299508A200F4E69C /* correctEasyAnswerSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BB2B25F299508A200F4E69C /* correctEasyAnswerSound.mp3 */; };
 		9BB2B26229950BF000F4E69C /* HintButtonLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB2B26129950BF000F4E69C /* HintButtonLogic.swift */; };
+		9BBDC57A2996C6D50020E51B /* fiveSecWaitAnswerSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BBDC5792996C6D50020E51B /* fiveSecWaitAnswerSound.mp3 */; };
 		9BC24D4E299044E8009A90A1 /* mainSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BC24D4D299044E8009A90A1 /* mainSound.mp3 */; };
 		9BCC48C129978C8100BC1DEF /* fiveSecWaitAnswerSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BCC48C029978C8100BC1DEF /* fiveSecWaitAnswerSound.mp3 */; };
 		FC333AED2993E28D000158E6 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC333AEC2993E28D000158E6 /* Question.swift */; };
@@ -54,6 +55,7 @@
 		9BB2B25A2995042B00F4E69C /* incorrectAnswerSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = incorrectAnswerSound.mp3; sourceTree = "<group>"; };
 		9BB2B25F299508A200F4E69C /* correctEasyAnswerSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = correctEasyAnswerSound.mp3; sourceTree = "<group>"; };
 		9BB2B26129950BF000F4E69C /* HintButtonLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintButtonLogic.swift; sourceTree = "<group>"; };
+		9BBDC5792996C6D50020E51B /* fiveSecWaitAnswerSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fiveSecWaitAnswerSound.mp3; sourceTree = "<group>"; };
 		9BC24D4D299044E8009A90A1 /* mainSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = mainSound.mp3; sourceTree = "<group>"; };
 		9BCC48C029978C8100BC1DEF /* fiveSecWaitAnswerSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fiveSecWaitAnswerSound.mp3; sourceTree = "<group>"; };
 		FC333AEC2993E28D000158E6 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
@@ -145,7 +147,9 @@
 				9BB2B25A2995042B00F4E69C /* incorrectAnswerSound.mp3 */,
 				9BB2B25F299508A200F4E69C /* correctEasyAnswerSound.mp3 */,
 				040327B529953C140054F573 /* timeSound.mp3 */,
-				9BCC48C029978C8100BC1DEF /* fiveSecWaitAnswerSound.mp3 */,
+
+				9BBDC5792996C6D50020E51B /* fiveSecWaitAnswerSound.mp3 */,
+
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -210,7 +214,9 @@
 			files = (
 				9BC24D4E299044E8009A90A1 /* mainSound.mp3 in Resources */,
 				9BB2B260299508A200F4E69C /* correctEasyAnswerSound.mp3 in Resources */,
-				9BCC48C129978C8100BC1DEF /* fiveSecWaitAnswerSound.mp3 in Resources */,
+
+				9BBDC57A2996C6D50020E51B /* fiveSecWaitAnswerSound.mp3 in Resources */,
+
 				0456DE8F298EFD1D005571A8 /* LaunchScreen.storyboard in Resources */,
 				0470CCA12996ADDF00440ADA /* takeMoneySound.mp3 in Resources */,
 				040327B629953C140054F573 /* timeSound.mp3 in Resources */,
