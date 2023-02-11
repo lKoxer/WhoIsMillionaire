@@ -143,12 +143,9 @@ extension GameViewController { // вынес логику действий в и
         
         // переход на экран результата
 
-
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
             self.stopSound()
-            let resultVC = QuestionViewController()
-             resultVC.resultOfTheGame = prizeAmount
-            self.navigationController?.pushViewController(resultVC, animated: true)
+            self.goToResultVC()
         }
 
     }
@@ -168,6 +165,14 @@ extension GameViewController { // вынес логику действий в и
     // остановка таймера
     func stopTimer() {
         timer.invalidate()
+    }
+    
+    // переход на экран с результатами
+    func goToResultVC() {
+        self.stopSound()
+        let resultVC = ResultViewController()
+        resultVC.resultOfTheGame = prizeAmount
+        self.navigationController?.pushViewController(resultVC, animated: true)
     }
 }
 

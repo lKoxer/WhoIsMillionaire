@@ -140,7 +140,6 @@ class ResultViewController: UIViewController { //изменил на имя с �
         player.play()
         
             }
-        }
 
     func stopPlay(_ player: AVAudioPlayer, successfully flag: Bool) {
         player.stop()
@@ -173,6 +172,6 @@ class ResultViewController: UIViewController { //изменил на имя с �
             backgroundView.topAnchor.constraint(equalTo: view.topAnchor),
             backgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
-
     }
+}
 
