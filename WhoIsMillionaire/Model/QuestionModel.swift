@@ -86,12 +86,19 @@ struct QuestionModel {
   
   // метод ответ
   func getAnswers() -> [String] {
-      return questions[questionNumber].answers
+      return questions[questionNumber].answers.shuffled()
   }
   
   // подсчет денег
-  func countOfSumm() -> String {
-    return questions[questionNumber].summ
+  func countOfSum() -> String {
+    switch score {
+       case "1000000 рублей": return "1000000 рублей"
+       case "1000 рублей", "2000 рублей", "4000 рублей", "8000 рублей", "16000 рублей":
+           return "1000 рублей"
+       case "32000 рублей", "64000 рублей", "128000 рублей", "250000 рублей", "500000 рублей":
+           return "32000 рублей"
+       default: return "0 рублей"
+    }
   }
   
   // счетчик вопросов

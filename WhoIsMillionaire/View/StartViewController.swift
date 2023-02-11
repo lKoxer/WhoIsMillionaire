@@ -84,12 +84,12 @@ class StartViewController: UIViewController {
             backgroundView.topAnchor.constraint(equalTo: view.topAnchor),
             backgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 
-            startButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -230),
+            startButton.topAnchor.constraint(equalTo: logoView.bottomAnchor, constant: 30),
             startButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
             startButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
             startButton.heightAnchor.constraint(equalToConstant: 60),
 
-            rulesButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -150),
+            rulesButton.topAnchor.constraint(equalTo: startButton.bottomAnchor, constant: 20),
             rulesButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
             rulesButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
             rulesButton.heightAnchor.constraint(equalToConstant: 60),

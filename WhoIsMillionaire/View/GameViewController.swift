@@ -9,8 +9,16 @@
 import UIKit
 import AVFoundation
 
+//protocol UpdateUI {
+//    func updateUI()
+//}
+
 class GameViewController: UIViewController {
     
+
+    // добавила переменную для того, чтобы корректно передавать сумму выигрыша
+    var prizeAmount = ""
+
     // фоновое изображение
     var backgroundImageView: UIImageView  = {
         let imageView = UIImageView()
@@ -29,6 +37,7 @@ class GameViewController: UIViewController {
         let button = UIButton(type: .system)
         button.showsTouchWhenHighlighted = true
         button.setBackgroundImage(UIImage(named: "mainLogo"), for: .normal)
+        button.addTarget(self, action: #selector(stopButtonPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -104,13 +113,13 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        playTimeSound()
+//        playTimeSound()
         setupUI()
 //        roundTimer()
         fiftyFiftyLogic()
         hallHelpLogic()
         friendCallLogic()
-        stopButtonAction(button: stopLogoButton)
+//        stopButtonAction(button: stopLogoButton)
         answerButtonAction()
         updateUI()
         self.navigationItem.hidesBackButton = true
@@ -119,16 +128,19 @@ class GameViewController: UIViewController {
     
     
     // метод остановки игры ч-з нажатие на стоп и алерт
-    func stopButtonAction(button: UIButton) {
-        button.addTarget(self, action: #selector(stopButtonPressed), for: .touchUpInside)
-    }
+//    func stopButtonAction(button: UIButton) {
+//        button.addTarget(self, action: #selector(stopButtonPressed), for: .touchUpInside)
+//    }
     
     @objc func stopButtonPressed(sender: UIButton) {
-        let alertController = UIAlertController(title: "Выход", message: "Вы хотите закончить игру?", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Выход", message: "Вы хотите закончить игру и забрать деньги?", preferredStyle: .alert)
         
         // переход на экран результата игры
         let okAction = UIAlertAction(title: "Да", style: .default) { _ in
-            self.gameOver()
+            self.stopTimer()
+            self.stopSound()
+            let resultVC = ResultViewController()
+            self.navigationController?.pushViewController(resultVC, animated: true)
         }
         // отмена выхода
         let cancelAction = UIAlertAction(title: "Нет", style: .cancel, handler: nil)

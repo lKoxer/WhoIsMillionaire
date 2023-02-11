@@ -10,7 +10,9 @@ import UIKit
 import AVFoundation
 
 class ResultViewController: UIViewController { //изменил на имя с большой буквы
-    
+
+    var resultOfTheGame = ""
+
     var player = AVAudioPlayer()
     var questionModel = QuestionModel()
     
@@ -23,7 +25,7 @@ class ResultViewController: UIViewController { //изменил на имя с �
     }()
     
     let logoView: UIImageView = {
-       let logoImage = UIImageView ()
+        let logoImage = UIImageView ()
         logoImage.image = UIImage(named: "logo")
         logoImage.translatesAutoresizingMaskIntoConstraints = false
         return logoImage
@@ -35,6 +37,8 @@ class ResultViewController: UIViewController { //изменил на имя с �
         resultLabel.font = UIFont.boldSystemFont(ofSize: 40)
         resultLabel.textColor = UIColor.white
         resultLabel.shadowColor = #colorLiteral(red: 0.1607843137, green: 0.1921568627, blue: 0.2980392157, alpha: 1)
+        resultLabel.adjustsFontSizeToFitWidth = true
+        resultLabel.minimumScaleFactor = 0.5
         resultLabel.text = "Вы выиграли"
         resultLabel.layer.shadowRadius = 3.0
         resultLabel.layer.shadowOpacity = 1.0
@@ -60,7 +64,7 @@ class ResultViewController: UIViewController { //изменил на имя с �
         sumLabel.translatesAutoresizingMaskIntoConstraints = false
         return sumLabel
     }()
-
+    
     
     let buttonPlayyAgain: UIButton = {
         let buttonPlayAgain = UIButton()
@@ -98,6 +102,7 @@ class ResultViewController: UIViewController { //изменил на имя с �
         setupConstaints()
         self.navigationItem.hidesBackButton = true // скрытие кнопки назад, добавил Павел
     }
+
         
         func setupView() {
             view.addSubview(logoView)
@@ -105,9 +110,9 @@ class ResultViewController: UIViewController { //изменил на имя с �
             view.addSubview(buttonPlayyAgain)
             view.addSubview(buttonExit)
             view.addSubview(sumLabel)
-            sumLabel.text = questionModel.countOfSumm()
+            sumLabel.text = resultOfTheGame
         }
-    
+
     
     @objc func playAgainPressed() {
         let gameStartVC = GameViewController()
@@ -122,17 +127,26 @@ class ResultViewController: UIViewController { //изменил на имя с �
     func playEndSound() {
         guard let url = Bundle.main.url(forResource: "gameOverSound", withExtension: "mp3") else { return }
         do {
+            
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+            
             player = try AVAudioPlayer(contentsOf: url)
-            player.numberOfLoops = -1
+
         } catch {
             print ("sound error")
         }
+  
         player.play()
-    }
-}
+        
+            }
+        }
 
-extension ResultViewController {
+    func stopPlay(_ player: AVAudioPlayer, successfully flag: Bool) {
+        player.stop()
+    }
     
+
     func setupConstaints() {
         NSLayoutConstraint.activate ([
             logoView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 19),
@@ -144,12 +158,12 @@ extension ResultViewController {
             sumLabel.topAnchor.constraint(equalTo: resultLabel.bottomAnchor, constant: 10),
             sumLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            buttonPlayyAgain.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -230),
+            buttonPlayyAgain.topAnchor.constraint(equalTo: sumLabel.bottomAnchor, constant: 60),
             buttonPlayyAgain.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
             buttonPlayyAgain.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
             buttonPlayyAgain.heightAnchor.constraint(equalToConstant: 60),
 
-            buttonExit.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -150),
+            buttonExit.topAnchor.constraint(equalTo: buttonPlayyAgain.bottomAnchor, constant: 20),
             buttonExit.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
             buttonExit.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
             buttonExit.heightAnchor.constraint(equalToConstant: 60),
@@ -159,5 +173,6 @@ extension ResultViewController {
             backgroundView.topAnchor.constraint(equalTo: view.topAnchor),
             backgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
+
     }
-}
+
