@@ -145,12 +145,12 @@ extension ResultViewController {
             sumLabel.topAnchor.constraint(equalTo: resultLabel.bottomAnchor, constant: 10),
             sumLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            buttonPlayyAgain.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -230),
+            buttonPlayyAgain.topAnchor.constraint(equalTo: sumLabel.bottomAnchor, constant: 60),
             buttonPlayyAgain.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
             buttonPlayyAgain.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
             buttonPlayyAgain.heightAnchor.constraint(equalToConstant: 60),
 
-            buttonExit.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -150),
+            buttonExit.topAnchor.constraint(equalTo: buttonPlayyAgain.bottomAnchor, constant: 20),
             buttonExit.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
             buttonExit.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
             buttonExit.heightAnchor.constraint(equalToConstant: 60),
