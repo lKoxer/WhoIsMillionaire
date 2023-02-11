@@ -13,10 +13,15 @@ import AVFoundation
 //    func updateUI()
 //}
 
+//protocol SettingsViewControllerDelegate {
+//    func settingsDidChange()
+//}
+
 class GameViewController: UIViewController {
     
     var transfer = QuestionViewController()
     
+//    weak var delegate: SettingsViewControllerDelegate?
     
     // фоновое изображение
     var backgroundImageView: UIImageView  = {
@@ -112,6 +117,11 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        let savedQuestionNumber = UserDefaults.standard.integer(forKey: nextQuestionKey)
+        questionModel.questionNumber = UserDefaults.standard.integer(forKey: "questionNumber")
+        
+        print("again")
 //        playTimeSound()
         setupUI()
 //        roundTimer()
@@ -124,6 +134,15 @@ class GameViewController: UIViewController {
         self.navigationItem.hidesBackButton = true
         
     }
+    
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        let userDefaults = UserDefaults.standard
+//        if let stringValue = userDefaults.string(forKey: "savedDataKey") {
+//                updateUI()
+//            }
+//    }
     
     
     // метод остановки игры ч-з нажатие на стоп и алерт

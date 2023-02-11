@@ -409,7 +409,7 @@ class QuestionViewController: UIViewController {
     @objc func backButtonTapped() {
         let gameVC = GameViewController()
         self.navigationController?.pushViewController(gameVC, animated: true)
-        gameVC.updateUI()
+//        gameVC.updateUI()
         
     }
     
