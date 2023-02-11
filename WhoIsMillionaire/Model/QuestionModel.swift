@@ -86,7 +86,7 @@ struct QuestionModel {
   
   // метод ответ
   func getAnswers() -> [String] {
-      return questions[questionNumber].answers
+      return questions[questionNumber].answers.shuffled()
   }
   
   // подсчет денег

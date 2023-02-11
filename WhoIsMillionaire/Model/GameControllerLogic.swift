@@ -56,11 +56,12 @@ extension GameViewController { // вынес логику действий в и
 
             }
             
-            
-            
             Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(updateCorrectAnswer), userInfo: nil, repeats: false)
             
-            Timer.scheduledTimer(timeInterval: 7, target: self, selector: #selector(updateUI), userInfo: nil, repeats: false)
+            Timer.scheduledTimer(timeInterval: 6, target: self, selector: #selector(goToQuestionVC), userInfo: nil, repeats: false)
+            
+//            Timer.scheduledTimer(timeInterval: 7, target: self, selector: #selector(updateUI), userInfo: nil, repeats: false)
+            
       
             
         } else {
@@ -134,10 +135,29 @@ extension GameViewController { // вынес логику действий в и
         
         // переход на экран результата
 
-        let resultVC = ResultViewController()
-        self.navigationController?.pushViewController(resultVC, animated: true)
-        resultVC.resultOfTheGame = prizeAmount
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+            self.stopSound()
+            let resultVC = QuestionViewController()
+             resultVC.resultOfTheGame = prizeAmount
+            self.navigationController?.pushViewController(resultVC, animated: true)
+        }
 
+    }
+    // переход на Question VC
+    @objc func goToQuestionVC() {
+        self.stopSound()
+        let resultVC = QuestionViewController()
+        self.navigationController?.pushViewController(resultVC, animated: true)
+    }
+    
+    // остановка музыки
+    func stopSound() {
+        player.stop()
+    }
+    
+    // остановка таймера
+    func stopTimer() {
+        timer.invalidate()
     }
 }
 
