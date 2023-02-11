@@ -413,7 +413,7 @@ class QuestionViewController: UIViewController {
         
     }
     
-    
+//    
     func setupView () {
         view.addSubview(logoView)
         view.addSubview(rectangleView15)
