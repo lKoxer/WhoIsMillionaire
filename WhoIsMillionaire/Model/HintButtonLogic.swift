@@ -1,3 +1,4 @@
+
 //
 //  AnswerButtonLogic.swift
 //  WhoIsMillionaire
@@ -23,8 +24,12 @@ extension GameViewController {
         // переход на экран результата игры
         let okAction = UIAlertAction(title: "Да", style: .default) { _ in
             self.removeHalfAnswers()
+            
             self.fiftyFiftyButton.isEnabled = false
             self.fiftyFiftyButton.setBackgroundImage(UIImage(named: "fiftyFiftyNotAvailable"), for: .normal)
+            
+            let taken5050Hint = true  // в отд. метод подсказок
+            UserDefaults.standard.set(taken5050Hint, forKey: "fiftyHint") // в отд. метод подсказок
         }
         // отмена выхода
         let cancelAction = UIAlertAction(title: "Нет", style: .cancel, handler: nil)
@@ -73,8 +78,12 @@ extension GameViewController {
         // переход на экран результата игры
         let okAction = UIAlertAction(title: "Да", style: .default) { _ in
             self.hallHelpAnswers()
+            
             self.hallHelpButton.isEnabled = false
             self.hallHelpButton.setBackgroundImage(UIImage(named: "hallHelpNotAvailable"), for: .normal)
+            
+            let takenHallHint = true  // в отд. метод подсказок
+            UserDefaults.standard.set(takenHallHint, forKey: "hallHint") // в отд. метод подсказок
         }
         // отмена выхода
         let cancelAction = UIAlertAction(title: "Нет", style: .cancel, handler: nil)
@@ -94,7 +103,8 @@ extension GameViewController {
         var onlyIncorrectAnswers = [UIButton]()
         // массив все кнопок
         let answerButtonArray = [answerButtonA, answerButtonB, answerButtonC, answerButtonD]
-        
+     
+        // оставляем массив только из неверных и не убранных ответов
         for button in answerButtonArray  {
             if  button.currentTitle != "" {
                 notEmptyButton.append(button)
@@ -109,10 +119,9 @@ extension GameViewController {
         
         var correctAnswer = Bool()
         var answerTitle = ""
-        //        var answerAlert = ""
         let randomNumber = Int.random(in: 1...100)
         switch randomNumber {
-        case 0...70: //!!!
+        case 0...70: //
             correctAnswer = true
             print("true")
         default:
@@ -150,8 +159,12 @@ extension GameViewController {
         // переход на экран результата игры
         let okAction = UIAlertAction(title: "Да", style: .default) { _ in
             self.friendHelpAnswer()
+            
             self.callToFriendButton.isEnabled = false
             self.callToFriendButton.setBackgroundImage(UIImage(named: "callFriendNotAvailable"), for: .normal)
+            
+            let friendCallHint = true  // в отд. метод подсказок
+            UserDefaults.standard.set(friendCallHint, forKey: "callHint") // в отд. метод подсказок
         }
         // отмена выхода
         let cancelAction = UIAlertAction(title: "Нет", style: .cancel, handler: nil)
@@ -188,7 +201,7 @@ extension GameViewController {
             var answerTitle = ""
             let randomNumber = Int.random(in: 1...100)
             switch randomNumber {
-            case 0...80: //!!!
+            case 0...80: //
                 correctAnswer = true
                 print("true")
             default:
@@ -215,9 +228,25 @@ extension GameViewController {
         }
         
         
+    func hintButtonsShow() {
+        
+        if UserDefaults.standard.bool(forKey: "fiftyHint") {
+            fiftyFiftyButton.isEnabled = false
+            fiftyFiftyButton.setBackgroundImage(UIImage(named: "fiftyFiftyNotAvailable"), for: .normal)
+        }
+        
+        if UserDefaults.standard.bool(forKey: "hallHint") {
+            hallHelpButton.isEnabled = false
+            hallHelpButton.setBackgroundImage(UIImage(named: "hallHelpNotAvailable"), for: .normal)
+        }
+        
+        if UserDefaults.standard.bool(forKey: "callHint") {
+            callToFriendButton.isEnabled = false
+            callToFriendButton.setBackgroundImage(UIImage(named: "callFriendNotAvailable"), for: .normal)
+        }
         
         
-        
+    }
     
         
     

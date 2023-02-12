@@ -134,7 +134,7 @@ class GameViewController: UIViewController {
         answerButtonAction()
         updateUI()
         self.navigationItem.hidesBackButton = true
-        
+        hintButtonsShow()
     }
     
     
