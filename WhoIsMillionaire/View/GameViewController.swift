@@ -19,6 +19,7 @@ import AVFoundation
 
 class GameViewController: UIViewController {
     
+//    let resultLabel = ResultViewController()
 
     var transfer = QuestionViewController()
     var prizeAmount = ""
@@ -83,9 +84,7 @@ class GameViewController: UIViewController {
     // лейбл суммы вопроса
     let questionSummLabel: UILabel = {
         let label = UILabel()
-//        label.text = "500 RUB"
         label.textAlignment = .right
-//        label.layer.cornerRadius = 10
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.7
         label.textColor = .white

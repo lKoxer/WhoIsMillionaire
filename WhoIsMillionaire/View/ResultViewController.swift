@@ -31,15 +31,15 @@ class ResultViewController: UIViewController { //изменил на имя с �
         return logoImage
     }()
     
-    let resultLabel: UILabel = {
+    var resultLabel: UILabel = {
         let resultLabel = UILabel()
-        resultLabel.text = ""
+//        resultLabel.text = ""
         resultLabel.font = UIFont.boldSystemFont(ofSize: 40)
         resultLabel.textColor = UIColor.white
         resultLabel.shadowColor = #colorLiteral(red: 0.1607843137, green: 0.1921568627, blue: 0.2980392157, alpha: 1)
         resultLabel.adjustsFontSizeToFitWidth = true
-        resultLabel.minimumScaleFactor = 0.5
-        resultLabel.text = "Вы выиграли"
+        resultLabel.minimumScaleFactor = 0.7
+//        resultLabel.text = "Вы выиграли"
         resultLabel.layer.shadowRadius = 3.0
         resultLabel.layer.shadowOpacity = 1.0
         resultLabel.layer.shadowOffset = CGSize(width: 4, height: 4)
@@ -107,7 +107,6 @@ class ResultViewController: UIViewController { //изменил на имя с �
         }
     }
 
-        
         func setupView() {
             view.addSubview(logoView)
             view.addSubview(resultLabel)
@@ -131,7 +130,6 @@ class ResultViewController: UIViewController { //изменил на имя с �
     func playEndSound() {
         guard let url = Bundle.main.url(forResource: "gameOverSound", withExtension: "mp3") else { return }
         do {
-            
             try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
             try AVAudioSession.sharedInstance().setActive(true)
             
@@ -152,16 +150,19 @@ class ResultViewController: UIViewController { //изменил на имя с �
 
     func setupConstaints() {
         NSLayoutConstraint.activate ([
+            
             logoView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 19),
             logoView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            resultLabel.topAnchor.constraint(equalTo: logoView.bottomAnchor, constant: 5),
+            resultLabel.topAnchor.constraint(equalTo: logoView.bottomAnchor, constant: 16),
             resultLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            resultLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
+            resultLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8),
             
-            sumLabel.topAnchor.constraint(equalTo: resultLabel.bottomAnchor, constant: 10),
-            sumLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//            sumLabel.topAnchor.constraint(equalTo: resultLabel.bottomAnchor, constant: 10),
+//            sumLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            buttonPlayyAgain.topAnchor.constraint(equalTo: sumLabel.bottomAnchor, constant: 60),
+            buttonPlayyAgain.topAnchor.constraint(equalTo: resultLabel.bottomAnchor, constant: 60),
             buttonPlayyAgain.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
             buttonPlayyAgain.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
             buttonPlayyAgain.heightAnchor.constraint(equalToConstant: 60),

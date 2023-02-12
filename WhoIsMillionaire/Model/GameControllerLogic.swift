@@ -9,9 +9,6 @@
 import Foundation
 import UIKit
 import AVFoundation
-
-
-
 extension GameViewController { // вынес логику действий в игре в отдельный файл
     
     func answerButtonAction() {
@@ -19,7 +16,6 @@ extension GameViewController { // вынес логику действий в и
             button.addTarget(self, action: #selector(answerButtonPressed), for: .touchUpInside)
         }
     }
-    
     @objc func answerButtonPressed(_ sender: UIButton) {
         
         // музыка ожидания
@@ -37,6 +33,9 @@ extension GameViewController { // вынес логику действий в и
         // ставим кнопкам ответы
         guard let userAnswer = sender.currentTitle else { return print("answersMistake") }
 //
+        for button in [answerButtonA, answerButtonB, answerButtonC, answerButtonD, stopLogoButton, hallHelpButton, fiftyFiftyButton, callToFriendButton] {
+            button.isEnabled = false
+        }
         
         // проверяем ответ, то меняем фон кнопки на соотвествующий
         let userGotItRight = questionModel.checkAnswer(userAnswer: userAnswer)
@@ -87,6 +86,9 @@ extension GameViewController { // вынес логику действий в и
     
     // логика смены вопроса на экране
     @objc func updateUI() {
+        for button in [answerButtonA, answerButtonB, answerButtonC, answerButtonD, stopLogoButton, hallHelpButton, fiftyFiftyButton, callToFriendButton] {
+            button.isEnabled = true
+        }
 
         timer.invalidate() //стопим таймер
         totalTime = 30 //обнуляем время
@@ -96,9 +98,6 @@ extension GameViewController { // вынес логику действий в и
         roundTimer()
 
         // след вопрос на экране
-        
-        
-        
         questionLabel.text = questionModel.getQuestionText()
         print("next questions")
         let answerChoices = questionModel.getAnswers()
@@ -136,6 +135,7 @@ extension GameViewController { // вынес логику действий в и
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
             self.stopSound()
             let resultVC = ResultViewController()
+            resultVC.resultLabel.text = "Выигрыш" + " " + (self.questionSummLabel.text ?? "")
             self.navigationController?.pushViewController(resultVC, animated: true)
         }
     }
