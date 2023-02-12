@@ -10,18 +10,6 @@ import Foundation
 import UIKit
 import AVFoundation
 
-class QuestionData {
-    static let shared = QuestionData()
-//    private init() {}
-    var currentQuestionNumber = 0
-    
-}
-
-// Store the current question number
-//QuestionData.shared.currentQuestionNumber = 3
-
-// Retrieve the current question number
-//let questionNumber = QuestionData.shared.currentQuestionNumber
 
 
 extension GameViewController { // вынес логику действий в игре в отдельный файл
@@ -54,38 +42,17 @@ extension GameViewController { // вынес логику действий в и
         let userGotItRight = questionModel.checkAnswer(userAnswer: userAnswer)
         if userGotItRight {
             
-
             sender.setBackgroundImage(UIImage(named: "waitingAnswerImage"), for: .normal)
-            
-            // действие при верном ответе
-            sender.setBackgroundImage(UIImage(named: "correctAnswerImage"), for: .normal)
-            questionModel.nextQuestion()
-            Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateUI), userInfo: nil, repeats: false)
-            prizeAmount = questionModel.countOfSum()
-            
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
                 sender.setBackgroundImage(UIImage(named: "correctAnswerImage"), for: .normal)
             }
             
-            // музыка
-            guard let url = Bundle.main.url(forResource: "correctEasyAnswerSound", withExtension: "mp3") else { return }
-            do {
-                player = try AVAudioPlayer(contentsOf: url)
-            } catch {
-                print ("sound error")
-
-            }
-            
             Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(updateCorrectAnswer), userInfo: nil, repeats: false)
-           
-//            Timer.scheduledTimer(timeInterval: 6, target: self, selector: #selector(updateUI), userInfo: nil, repeats: false)
+            Timer.scheduledTimer(timeInterval: 6, target: self, selector: #selector(updateUI), userInfo: nil, repeats: false)
             
+//            Timer.scheduledTimer(timeInterval: 6, target: self, selector: #selector(goToQuestionVC), userInfo: nil, repeats: false)
             
-
-            Timer.scheduledTimer(timeInterval: 6, target: self, selector: #selector(goToQuestionVC), userInfo: nil, repeats: false)
-            
-
             
         } else {
             
@@ -95,10 +62,7 @@ extension GameViewController { // вынес логику действий в и
                 sender.setBackgroundImage(UIImage(named: "incorrectAnswerImage"), for: .normal)
             }
             // таймер при нажатии кнопки неверного ответа
-
-            Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(gameOver), userInfo: nil, repeats: false)
-            prizeAmount = questionModel.countOfSum()
-
+            Timer.scheduledTimer(timeInterval: 6, target: self, selector: #selector(gameOver), userInfo: nil, repeats: false)
         }
      
     }
@@ -137,26 +101,10 @@ extension GameViewController { // вынес логику действий в и
         
         questionLabel.text = questionModel.getQuestionText()
         print("next questions")
-        
-        // нам нужно добраться до ответов и адаптировать заголовки кнопок под эти ответы
-        
-//        let answerChoices = questionModel.getAnswers()
-
-//        var questionModel = QuestionModel()
         let answerChoices = questionModel.getAnswers()
         let numberOfQuestion = questionModel.questionNumber
         UserDefaults.standard.set(numberOfQuestion, forKey: "questionNumber")
         
-        
-        
-//
-//        questionModel.questionNumber = numberOfQuestion
-//        var model = QuestionModel()
-//        model.questionNumber = QuestionData().currentQuestionNumber
-//        let answerChoices = model.getAnswers()
-//        model.questionNumber = QuestionData().currentQuestionNumber
-        
-//        answerChoices.synchronize()
         answerButtonA.setTitle(answerChoices[0], for: .normal)
         answerButtonB.setTitle(answerChoices[1], for: .normal)
         answerButtonC.setTitle(answerChoices[2], for: .normal)
@@ -172,8 +120,7 @@ extension GameViewController { // вынес логику действий в и
     @objc func gameOver() {
         
         if let domain = Bundle.main.bundleIdentifier { // сброc UserDefaults
-            UserDefaults.standard.removePersistentDomain(forName: domain) // сброc UserDefaults
-//            return true
+            UserDefaults.standard.removePersistentDomain(forName: domain) // сброc
         }
         
         // музыка неверного ответа
@@ -186,12 +133,11 @@ extension GameViewController { // вынес логику действий в и
             player.play()
         
         // переход на экран результата
-
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
             self.stopSound()
-            self.goToResultVC()
+            let resultVC = ResultViewController()
+            self.navigationController?.pushViewController(resultVC, animated: true)
         }
-
     }
     // переход на Question VC
     @objc func goToQuestionVC() {
@@ -200,7 +146,6 @@ extension GameViewController { // вынес логику действий в и
         stopSound()
         let resultVC = QuestionViewController()
         self.navigationController?.pushViewController(resultVC, animated: true)
-
     }
     
     // остановка музыки
@@ -211,14 +156,6 @@ extension GameViewController { // вынес логику действий в и
     // остановка таймера
     func stopTimer() {
         timer.invalidate()
-    }
-    
-    // переход на экран с результатами
-    func goToResultVC() {
-        self.stopSound()
-        let resultVC = ResultViewController()
-        resultVC.resultOfTheGame = prizeAmount
-        self.navigationController?.pushViewController(resultVC, animated: true)
     }
 }
 
