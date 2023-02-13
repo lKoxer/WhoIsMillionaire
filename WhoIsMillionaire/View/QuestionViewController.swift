@@ -104,7 +104,7 @@ class QuestionViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
+//        
         let backButtonItem = UIBarButtonItem(title: "Custom Back", style: .plain, target: self, action: #selector(backButtonTapped))
         navigationItem.leftBarButtonItem = backButtonItem
         backButtonItem.title = "К игре"
