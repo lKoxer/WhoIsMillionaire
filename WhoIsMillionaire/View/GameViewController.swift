@@ -127,7 +127,9 @@ class GameViewController: UIViewController {
         let okAction = UIAlertAction(title: "Да", style: .default) { _ in
             self.stopTimer()
             self.stopSound()
+            self.prizeAmount = self.questionModel.countOfSum()
             let resultVC = ResultViewController()
+            resultVC.resultOfTheGame = self.prizeAmount
             self.navigationController?.pushViewController(resultVC, animated: true)
         }
         // отмена выхода
