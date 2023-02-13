@@ -9,7 +9,7 @@ import Foundation
 
 struct QuestionModel {
 
-  // счет игры
+  // счет игры, текущая сумма
   var score = "0"
   
   // номер вопроса
@@ -80,7 +80,8 @@ struct QuestionModel {
   ]
   
   // метод вопрос
-  func getQuestionText() -> String {
+    mutating func getQuestionText() -> String {
+      score = questions[questionNumber].summ
       return questions[questionNumber].question
   }
   

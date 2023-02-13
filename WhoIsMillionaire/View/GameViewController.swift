@@ -136,16 +136,6 @@ class GameViewController: UIViewController {
         hintButtonsShow()
     }
     
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        let userDefaults = UserDefaults.standard
-//        if let stringValue = userDefaults.string(forKey: "savedDataKey") {
-//                updateUI()
-//            }
-//    }
-    
-    
     // метод остановки игры ч-з нажатие на стоп и алерт
 //    func stopButtonAction(button: UIButton) {
 //        button.addTarget(self, action: #selector(stopButtonPressed), for: .touchUpInside)

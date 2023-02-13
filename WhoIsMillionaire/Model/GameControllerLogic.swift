@@ -27,7 +27,6 @@ extension GameViewController { // вынес логику действий в и
         }
         player.play()
         
-        
         timerLabel.text = "Ответ принят"
         
         // ставим кнопкам ответы
@@ -98,7 +97,9 @@ extension GameViewController { // вынес логику действий в и
         roundTimer()
 
         // след вопрос на экране
-        questionLabel.text = questionModel.getQuestionText()
+//        questionLabel.text = questionModel.getQuestionText()
+//        questionModel.questionNumber = UserDefaults.standard.integer(forKey: "questionNumber")
+        
         print("next questions")
         let answerChoices = questionModel.getAnswers()
         let numberOfQuestion = questionModel.questionNumber
@@ -108,9 +109,11 @@ extension GameViewController { // вынес логику действий в и
         answerButtonB.setTitle(answerChoices[1], for: .normal)
         answerButtonC.setTitle(answerChoices[2], for: .normal)
         answerButtonD.setTitle(answerChoices[3], for: .normal)
-        questionSummLabel.text = questionModel.score
+        
+        questionLabel.text = questionModel.getQuestionText()
         answerButtonSetup()
         questionNumberLabel.text = "Вопрос \(questionModel.questionNumber + 1)"
+        questionSummLabel.text = questionModel.score
         
 
     }
@@ -118,9 +121,9 @@ extension GameViewController { // вынес логику действий в и
     // неверный ответ - музыка
     @objc func gameOver() {
         
-        if let domain = Bundle.main.bundleIdentifier { // сброc UserDefaults
-            UserDefaults.standard.removePersistentDomain(forName: domain) // сброc
-        }
+//        if let domain = Bundle.main.bundleIdentifier { // сброc UserDefaults
+//            UserDefaults.standard.removePersistentDomain(forName: domain) // сброc
+//        }
         
         // музыка неверного ответа
             guard let url = Bundle.main.url(forResource: "incorrectAnswerSound", withExtension: "mp3") else { return }
@@ -134,18 +137,46 @@ extension GameViewController { // вынес логику действий в и
         // переход на экран результата
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
             self.stopSound()
-            let resultVC = ResultViewController()
-            resultVC.resultLabel.text = "Выигрыш" + " " + (self.questionSummLabel.text ?? "")
-            self.navigationController?.pushViewController(resultVC, animated: true)
+            let questionVC = QuestionViewController()
+            self.navigationController?.pushViewController(questionVC, animated: true)
+            switch self.questionModel.questionNumber {
+            case 0...4: questionVC.safeSum = 0
+            case 5...9: questionVC.safeSum = 1000
+            case 10...14: questionVC.safeSum = 32000
+            case 15: questionVC.safeSum = 1000000
+            default: return
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 6.0) {
+                let resultVC = ResultViewController()
+                self.navigationController?.pushViewController(resultVC, animated: true)
+            }
+            
+//            questionVC.questionCounter = 0
+//            let resultVC = ResultViewController()
+//            resultVC.resultLabel.text = "Выигрыш" + " " + (self.questionSummLabel.text ?? "")
+//            self.navigationController?.pushViewController(resultVC, animated: true)
         }
     }
-    // переход на Question VC
+    // переход на Question VC при верном ответе
     @objc func goToQuestionVC() {
         updateUI()
         stopTimer()
         stopSound()
-        let resultVC = QuestionViewController()
-        self.navigationController?.pushViewController(resultVC, animated: true)
+        let questionVC = QuestionViewController()
+        self.navigationController?.pushViewController(questionVC, animated: true)
+        questionVC.navigationItem.hidesBackButton = true
+        
+        if questionVC.questionCounter == 15 {
+            questionVC.wonSumLabel.text = "Вы выиграли миллион!"
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                let resultVC = ResultViewController()
+                self.navigationController?.pushViewController(resultVC, animated: true)
+            }
+        }
+      
+        
+            
     }
     
     // остановка музыки

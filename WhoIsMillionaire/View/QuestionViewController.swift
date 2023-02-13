@@ -18,16 +18,27 @@ class QuestionViewController: UIViewController {
         return imageView
     }()
     
-    //    let backGroundImage: UIImage = {
-    //        let image = UIImage(named: "questionSumNumberView")
-    //        return image!
-    //    }()
+    var safeSum = 1
     
     let logoButton: UIButton = {
         let button = UIButton()
         button.setBackgroundImage(UIImage(named: "logo"), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
+    }()
+    
+    let wonSumLabel: UILabel = {
+        let label = UILabel()
+       
+        label.textAlignment = .center
+//        label.adjustsFontSizeToFitWidth = true
+//        label.minimumScaleFactor = 0.7
+        label.textColor = .white
+//        label.font = UIFont(name: "Roboto-Medium", size: 30)
+        label.text = "Вы выиграли 0 руб."
+        label.translatesAutoresizingMaskIntoConstraints = false
+        print("logo")
+        return label
     }()
     
     var currentBackgoundImageArray:[UIImage] = {
@@ -38,33 +49,8 @@ class QuestionViewController: UIViewController {
         return imageArray
     }()
     
-    //    let questionSumNumberView: UIImageView = {
-    //        let imageView = UIImageView()
-    //        imageView.image = UIImage(named: "questionSumNumberView")
-    //        imageView.contentMode = .scaleAspectFill
-    //        imageView.translatesAutoresizingMaskIntoConstraints = false
-    //        return imageView
-    //    }()
-    
     var questionCounter = 0
     
-    //
-    
-    //     массив кнопок вопросов(левый)
-    
-    // массивв кнопок сумм(правый)
-    //    let buttonPriceArray = [UIButton]()
-    
-    //    func buttonSetUp(_ button: UIButton) -> UIButton {
-    //        let button = UIButton()
-    //        button.setBackgroundImage(UIImage(named: "questionSumNumberView"), for: .normal)
-    //        button.titleLabel?.font = .systemFont(ofSize: 16)
-    //        button.translatesAutoresizingMaskIntoConstraints = false
-    //        button.setBackgroundImage(nil, for: .highlighted)
-    //        button.setImage(nil, for: .highlighted)
-    //
-    //        return button
-    //    }
     // создаем кнопки стоимость вопроса
     var buttonPrice1 = UIButton()
     var buttonPrice2 = UIButton()
@@ -104,104 +90,69 @@ class QuestionViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-//        
         let backButtonItem = UIBarButtonItem(title: "Custom Back", style: .plain, target: self, action: #selector(backButtonTapped))
         navigationItem.leftBarButtonItem = backButtonItem
         backButtonItem.title = "К игре"
-        //        setCurrentlabelImage()
-        //        questionCounter += 1
-        //        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
-        //        setupView()
+   
         setupViewsAndConstraint()
+        print(questionCounter)
+        
         questionCounter = UserDefaults.standard.integer(forKey: "questionCounter")
+        print(questionCounter)
+        
         setCurrentlabelImage()
-        //        let backButtonItem = UIBarButtonItem(title: "Custom Back", style: .plain, target: self, action: #selector(backButtonTapped))
-        //        navigationItem.leftBarButtonItem = backButtonItem
-        //        backButtonItem.title = "К игре"
+        print(questionCounter)
+        
+        backButtonItem.title = "К игре"
     }
     
     @objc func backButtonTapped() {
         let gameVC = GameViewController()
         self.navigationController?.pushViewController(gameVC, animated: true)
-        //        gameVC.updateUI()
+
     }
-    
-    //    func fieldsHighlighting() {
-    //        for button in [[buttonPrice1, buttonQuestion1], [buttonPrice2, buttonQuestion2]] {
-    //
-    //        }
-    //    }
-    
-    //
-    //    func setupView () {
-    //        view.addSubview(logoView)
-    //        view.addSubview(rectangleView15)
-    //        view.addSubview(rectangleView14)
-    //        view.addSubview(rectangleView13)
-    //        view.addSubview(rectangleView12)
-    //        view.addSubview(rectangleView11)
-    //        view.addSubview(rectangleView10)
-    //        view.addSubview(rectangleView9)
-    //        view.addSubview(rectangleView8)
-    //        view.addSubview(rectangleView7)
-    //        view.addSubview(rectangleView6)
-    //        view.addSubview(rectangleView5)
-    //        view.addSubview(rectangleView4)
-    //        view.addSubview(rectangleView3)
-    //        view.addSubview(rectangleView2)
-    //        view.addSubview(rectangleView1)
-    //        view.addSubview(labelQuestion15)
-    //        view.addSubview(labelQuestion14)
-    //        view.addSubview(labelQuestion13)
-    //        view.addSubview(labelQuestion12)
-    //        view.addSubview(labelQuestion11)
-    //        view.addSubview(labelQuestion10)
-    //        view.addSubview(labelQuestion9)
-    //        view.addSubview(labelQuestion8)
-    //        view.addSubview(labelQuestion7)
-    //        view.addSubview(labelQuestion6)
-    //        view.addSubview(labelQuestion5)
-    //        view.addSubview(labelQuestion4)
-    //        view.addSubview(labelQuestion3)
-    //        view.addSubview(labelQuestion2)
-    //        view.addSubview(labelQuestion1)
-    //        view.addSubview(labelPrice15)
-    //        view.addSubview(labelPrice14)
-    //        view.addSubview(labelPrice13)
-    //        view.addSubview(labelPrice12)
-    //        view.addSubview(labelPrice11)
-    //        view.addSubview(labelPrice10)
-    //        view.addSubview(labelPrice9)
-    //        view.addSubview(labelPrice8)
-    //        view.addSubview(labelPrice7)
-    //        view.addSubview(labelPrice6)
-    //        view.addSubview(labelPrice5)
-    //        view.addSubview(labelPrice4)
-    //        view.addSubview(labelPrice3)
-    //        view.addSubview(labelPrice2)
-    //        view.addSubview(labelPrice1)
-    //    }
     
     func setCurrentlabelImage(){
         
-        for (index, element) in [buttonQuestion1, buttonQuestion2, buttonQuestion3, buttonQuestion4, buttonQuestion5, buttonQuestion6, buttonQuestion7, buttonQuestion8, buttonQuestion9, buttonQuestion10, buttonQuestion11, buttonQuestion12, buttonQuestion13, buttonQuestion14, buttonQuestion15].enumerated() {
-            if index == questionCounter {
-                element.setBackgroundImage(UIImage(named: "waitingAnswerImage"), for: .normal)
-                
+        if questionCounter > 5 && questionCounter <= 10, safeSum == 1000 {
+            buttonPrice5.setBackgroundImage(UIImage(named: "waitingAnswerImage"), for: .normal)
+            buttonQuestion5.setBackgroundImage(UIImage(named: "waitingAnswerImage"), for: .normal)
+            questionCounter = 1000 // рандомное число чтобы кнопки из массива ниже не меняли цвет
+            wonSumLabel.text = buttonPrice5.currentTitle
+        }
+        
+        if questionCounter > 10 && questionCounter <= 14, safeSum == 32000 {
+            buttonPrice10.setBackgroundImage(UIImage(named: "waitingAnswerImage"), for: .normal)
+            buttonQuestion10.setBackgroundImage(UIImage(named: "waitingAnswerImage"), for: .normal)
+            questionCounter = 1000
+            wonSumLabel.text = buttonPrice10.currentTitle
+        }
+        
+        if questionCounter == 15 , safeSum == 100000 {
+            buttonPrice10.setBackgroundImage(UIImage(named: "waitingAnswerImage"), for: .normal)
+            buttonQuestion10.setBackgroundImage(UIImage(named: "waitingAnswerImage"), for: .normal)
+            questionCounter = 1000
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                let resultVC = ResultViewController()
+                self.navigationController?.pushViewController(resultVC, animated: true)
             }
-            //            questionCounter += 1
+        }
+        
+        for (index, element) in [buttonQuestion1, buttonQuestion2, buttonQuestion3, buttonQuestion4, buttonQuestion5, buttonQuestion6, buttonQuestion7, buttonQuestion8, buttonQuestion9, buttonQuestion10, buttonQuestion11, buttonQuestion12, buttonQuestion13, buttonQuestion14, buttonQuestion15].enumerated() {
+            if index == questionCounter, safeSum != 0 {
+                element.setBackgroundImage(UIImage(named: "waitingAnswerImage"), for: .normal)
+            }
         }
         
         for (index, element) in [buttonPrice1, buttonPrice2, buttonPrice3, buttonPrice4, buttonPrice5, buttonPrice6, buttonPrice7, buttonPrice8, buttonPrice9, buttonPrice10, buttonPrice11, buttonPrice12, buttonPrice13, buttonPrice14, buttonPrice15].enumerated() {
-            if index == questionCounter {
+            if index == questionCounter,  safeSum != 0 {
                 element.setBackgroundImage(UIImage(named: "waitingAnswerImage"), for: .normal)
-                
+                wonSumLabel.text = element.currentTitle
             }
         }
         
         questionCounter += 1
         UserDefaults.standard.set(questionCounter, forKey: "questionCounter")
-        
     }
 }
 
@@ -229,11 +180,6 @@ class QuestionViewController: UIViewController {
                 button.translatesAutoresizingMaskIntoConstraints = false
                 
             }
-            
-//            [buttonPrice1, buttonPrice2, buttonPrice3, buttonPrice4, buttonPrice5, buttonPrice6, buttonPrice7, buttonPrice8, buttonPrice9, buttonPrice10, buttonPrice11, buttonPrice12, buttonPrice13, buttonPrice14, buttonPrice15].forEach { button in
-//
-//                button
-//            }
             
             for button in [buttonQuestion1, buttonQuestion2, buttonQuestion3, buttonQuestion4, buttonQuestion5, buttonQuestion6, buttonQuestion7, buttonQuestion8, buttonQuestion9, buttonQuestion10, buttonQuestion11, buttonQuestion12, buttonQuestion13, buttonQuestion14, buttonQuestion15] {
                 
@@ -316,9 +262,13 @@ class QuestionViewController: UIViewController {
             mainStackView.distribution = .fillEqually
             mainStackView.translatesAutoresizingMaskIntoConstraints = false
             
+            
+//            view.addSubview(wonSumLabel)
             view.addSubview(backgroundImageView)
+            view.addSubview(wonSumLabel)
             view.addSubview(logoButton)
             view.addSubview(mainStackView)
+            
             
             NSLayoutConstraint.activate ([
                 
@@ -332,7 +282,13 @@ class QuestionViewController: UIViewController {
                 logoButton.heightAnchor.constraint(equalToConstant: 100),
                 logoButton.widthAnchor.constraint(equalToConstant: 100),
                 
-                mainStackView.topAnchor.constraint(equalTo: logoButton.bottomAnchor, constant: 16),
+                wonSumLabel.topAnchor.constraint(equalTo: logoButton.bottomAnchor, constant: 6),
+                wonSumLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+                wonSumLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+                wonSumLabel.heightAnchor.constraint(equalToConstant: 60),
+                
+                
+                mainStackView.topAnchor.constraint(equalTo: wonSumLabel.bottomAnchor, constant: 16),
                 mainStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
                 mainStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
                 mainStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16)
