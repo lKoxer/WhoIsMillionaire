@@ -88,6 +88,11 @@ struct QuestionModel {
   func getAnswers() -> [String] {
       return questions[questionNumber].answers.shuffled()
   }
+    
+  mutating func getScore() -> String {
+      score = questions[questionNumber].summ
+      return score
+    }
   
   // подсчет денег
   func countOfSum() -> String {

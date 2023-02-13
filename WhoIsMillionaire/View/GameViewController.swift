@@ -9,22 +9,10 @@
 import UIKit
 import AVFoundation
 
-//protocol UpdateUI {
-//    func updateUI()
-//}
-
-//protocol SettingsViewControllerDelegate {
-//    func settingsDidChange()
-//}
-
 class GameViewController: UIViewController {
-    
-//    let resultLabel = ResultViewController()
 
     var transfer = QuestionViewController()
     var prizeAmount = ""
-//    weak var delegate: SettingsViewControllerDelegate?
-    
 
     // фоновое изображение
     var backgroundImageView: UIImageView  = {
@@ -119,37 +107,18 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let savedQuestionNumber = UserDefaults.standard.integer(forKey: nextQuestionKey)
         questionModel.questionNumber = UserDefaults.standard.integer(forKey: "questionNumber")
         
-        print("again")
-//        playTimeSound()
         setupUI()
-//        roundTimer()
         fiftyFiftyLogic()
         hallHelpLogic()
         friendCallLogic()
-//        stopButtonAction(button: stopLogoButton)
         answerButtonAction()
         updateUI()
         self.navigationItem.hidesBackButton = true
         hintButtonsShow()
     }
     
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        let userDefaults = UserDefaults.standard
-//        if let stringValue = userDefaults.string(forKey: "savedDataKey") {
-//                updateUI()
-//            }
-//    }
-    
-    
-    // метод остановки игры ч-з нажатие на стоп и алерт
-//    func stopButtonAction(button: UIButton) {
-//        button.addTarget(self, action: #selector(stopButtonPressed), for: .touchUpInside)
-//    }
     
     @objc func stopButtonPressed(sender: UIButton) {
         let alertController = UIAlertController(title: "Выход", message: "Вы хотите закончить игру и забрать деньги?", preferredStyle: .alert)

@@ -42,13 +42,12 @@ extension GameViewController { // вынес логику действий в и
         if userGotItRight {
             
             sender.setBackgroundImage(UIImage(named: "waitingAnswerImage"), for: .normal)
-            
+            prizeAmount = questionModel.countOfSum()
             DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
                 sender.setBackgroundImage(UIImage(named: "correctAnswerImage"), for: .normal)
             }
             
             Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(updateCorrectAnswer), userInfo: nil, repeats: false)
-//            Timer.scheduledTimer(timeInterval: 6, target: self, selector: #selector(updateUI), userInfo: nil, repeats: false)
             
             Timer.scheduledTimer(timeInterval: 6, target: self, selector: #selector(goToQuestionVC), userInfo: nil, repeats: false)
             
@@ -56,7 +55,7 @@ extension GameViewController { // вынес логику действий в и
         } else {
             
             sender.setBackgroundImage(UIImage(named: "waitingAnswerImage"), for: .normal)
-            
+            prizeAmount = questionModel.countOfSum()
             DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
                 sender.setBackgroundImage(UIImage(named: "incorrectAnswerImage"), for: .normal)
             }
@@ -99,7 +98,6 @@ extension GameViewController { // вынес логику действий в и
 
         // след вопрос на экране
         questionLabel.text = questionModel.getQuestionText()
-        print("next questions")
         let answerChoices = questionModel.getAnswers()
         let numberOfQuestion = questionModel.questionNumber
         UserDefaults.standard.set(numberOfQuestion, forKey: "questionNumber")
@@ -108,7 +106,7 @@ extension GameViewController { // вынес логику действий в и
         answerButtonB.setTitle(answerChoices[1], for: .normal)
         answerButtonC.setTitle(answerChoices[2], for: .normal)
         answerButtonD.setTitle(answerChoices[3], for: .normal)
-        questionSummLabel.text = questionModel.score
+        questionSummLabel.text = questionModel.getScore()
         answerButtonSetup()
         questionNumberLabel.text = "Вопрос \(questionModel.questionNumber + 1)"
         
@@ -134,9 +132,7 @@ extension GameViewController { // вынес логику действий в и
         // переход на экран результата
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
             self.stopSound()
-            let resultVC = ResultViewController()
-            resultVC.resultLabel.text = "Выигрыш" + " " + (self.questionSummLabel.text ?? "")
-            self.navigationController?.pushViewController(resultVC, animated: true)
+            self.goToResultVC()
         }
     }
     // переход на Question VC
@@ -156,6 +152,12 @@ extension GameViewController { // вынес логику действий в и
     // остановка таймера
     func stopTimer() {
         timer.invalidate()
+    }
+    
+    func goToResultVC() {
+        let resultVC = ResultViewController()
+        resultVC.resultOfTheGame = prizeAmount
+        self.navigationController?.pushViewController(resultVC, animated: true)
     }
 }
 
