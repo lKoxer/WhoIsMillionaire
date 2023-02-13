@@ -10,7 +10,7 @@ import Foundation
 struct QuestionModel {
 
   // счет игры
-  var score = ""
+  var score = "0"
   
   // номер вопроса
   var questionNumber = 0

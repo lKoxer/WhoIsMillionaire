@@ -19,6 +19,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         let viewController = StartViewController()
+//        let viewController = QuestionViewController()
+        
         
         let navigatorController = UINavigationController(rootViewController: viewController)
         navigatorController.navigationBar.setBackgroundImage(UIImage(), for: .default)
