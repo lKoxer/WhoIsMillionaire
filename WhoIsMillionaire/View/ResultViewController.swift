@@ -33,13 +33,12 @@ class ResultViewController: UIViewController { //изменил на имя с �
     
     var resultLabel: UILabel = {
         let resultLabel = UILabel()
-//        resultLabel.text = ""
         resultLabel.font = UIFont.boldSystemFont(ofSize: 40)
         resultLabel.textColor = UIColor.white
         resultLabel.shadowColor = #colorLiteral(red: 0.1607843137, green: 0.1921568627, blue: 0.2980392157, alpha: 1)
         resultLabel.adjustsFontSizeToFitWidth = true
         resultLabel.minimumScaleFactor = 0.7
-//        resultLabel.text = "Вы выиграли"
+        resultLabel.text = "Вы выиграли"
         resultLabel.layer.shadowRadius = 3.0
         resultLabel.layer.shadowOpacity = 1.0
         resultLabel.layer.shadowOffset = CGSize(width: 4, height: 4)
@@ -49,13 +48,11 @@ class ResultViewController: UIViewController { //изменил на имя с �
         return resultLabel
     }()
     
-    let sumLabel: UILabel = {
-        let sumLabel = UILabel()
-        sumLabel.text = ""
+    var sumLabel: UILabel = {
+        var sumLabel = UILabel()
         sumLabel.font = UIFont.boldSystemFont(ofSize: 60)
         sumLabel.textColor = #colorLiteral(red: 0.9098039216, green: 0.8196078431, blue: 0.5137254902, alpha: 1)
         sumLabel.shadowColor = #colorLiteral(red: 0.1607843137, green: 0.1921568627, blue: 0.2980392157, alpha: 1)
-        sumLabel.text = "Вы выиграли"
         sumLabel.layer.shadowRadius = 3.0
         sumLabel.layer.shadowOpacity = 1.0
         sumLabel.layer.shadowOffset = CGSize(width: 4, height: 4)
@@ -96,6 +93,7 @@ class ResultViewController: UIViewController { //изменил на имя с �
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        sumLabel.text = resultOfTheGame
         playEndSound()
         view.addSubview(backgroundView)
         setupView()
@@ -113,7 +111,6 @@ class ResultViewController: UIViewController { //изменил на имя с �
             view.addSubview(buttonPlayyAgain)
             view.addSubview(buttonExit)
             view.addSubview(sumLabel)
-            sumLabel.text = resultOfTheGame
         }
 
     
@@ -159,10 +156,10 @@ class ResultViewController: UIViewController { //изменил на имя с �
             resultLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
             resultLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8),
             
-//            sumLabel.topAnchor.constraint(equalTo: resultLabel.bottomAnchor, constant: 10),
-//            sumLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            sumLabel.topAnchor.constraint(equalTo: resultLabel.bottomAnchor, constant: 10),
+            sumLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            buttonPlayyAgain.topAnchor.constraint(equalTo: resultLabel.bottomAnchor, constant: 60),
+            buttonPlayyAgain.topAnchor.constraint(equalTo: sumLabel.bottomAnchor, constant: 60),
             buttonPlayyAgain.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
             buttonPlayyAgain.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
             buttonPlayyAgain.heightAnchor.constraint(equalToConstant: 60),
